@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أحمد | مدونة شخصية</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Kufi+Arabic:wght@300;400;600;700;800&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0C0F14;
+  --bg-secondary: #141820;
+  --bg-card: #1A1F2B;
+  --bg-card-hover: #222838;
+  --accent: #D4A855;
+  --accent-dim: #B8922E;
+  --accent-glow: rgba(212, 168, 85, 0.15);
+  --text-primary: #E8E4DC;
+  --text-secondary: #9A9488;
+  --text-muted: #5E5A52;
+  --border: rgba(212, 168, 85, 0.12);
+  --border-strong: rgba(212, 168, 85, 0.25);
+  --font-ar: 'Noto Kufi Arabic', 'Amiri', sans-serif;
+  --font-ar-body: 'Amiri', 'Noto Kufi Arabic', serif;
+  --font-en: 'DM Serif Display', serif;
+  --font-en-body: 'Outfit', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-ar);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+body.en { font-family: var(--font-en-body); direction: ltr; }
+body.en h1, body.en h2, body.en h3 { font-family: var(--font-en); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(12, 15, 20, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.4s;
+}
+
+nav.scrolled { padding: 0.6rem 2rem; }
+
+.nav-logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 400;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--accent);
+  transition: width 0.3s;
+}
+body.en .nav-links a::after { right: auto; left: 0; }
+
+.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover::after { width: 100%; }
+
+.lang-toggle {
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--accent);
+  padding: 0.35rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-en-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  transition: all 0.3s;
+}
+
+.lang-toggle:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 2rem;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 1; }
+
+.hero-greeting {
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s forwards;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.4s forwards;
+}
+
+body.en .hero h1 { font-family: var(--font-en); font-weight: 400; }
+
+.hero h1 span {
+  display: block;
+  background: linear-gradient(135deg, var(--accent), #F0D48A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+  font-family: var(--font-ar-body);
+  opacity: 0;
+  animation: fadeUp 0.8s 0.6s forwards;
+}
+
+body.en .hero-subtitle { font-family: var(--font-en-body); font-weight: 300; }
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2.2rem;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: all 0.3s;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.8s forwards;
+}
+
+.hero-cta:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(212, 168, 85, 0.2);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  animation: pulse 2s infinite;
+}
+
+.scroll-hint .line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--accent-dim), transparent);
+}
+
+/* ─── SECTIONS ─── */
+section {
+  padding: 6rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+body.en .section-title { font-family: var(--font-en); font-weight: 400; }
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: var(--accent);
+  margin-top: 1rem;
+}
+
+/* ─── ABOUT ─── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-text p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-family: var(--font-ar-body);
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+body.en .about-text p { font-family: var(--font-en-body); font-weight: 300; line-height: 1.8; }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.8rem;
+  border-radius: 8px;
+  transition: all 0.4s;
+}
+
+.stat-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+body.en .stat-number { font-family: var(--font-en); }
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ─── EXPERIENCE ─── */
+.timeline {
+  position: relative;
+  padding-right: 3rem;
+}
+
+body.en .timeline { padding-right: 0; padding-left: 3rem; }
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent), var(--border), transparent);
+}
+
+body.en .timeline::before { right: auto; left: 0; }
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: all 0.4s;
+}
+
+.timeline-item:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-card-hover);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  right: -3.55rem;
+  top: 2.2rem;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+body.en .timeline-item::before { right: auto; left: -3.55rem; }
+
+.timeline-date {
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-role {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.timeline-company {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+}
+
+.timeline-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.9;
+  font-family: var(--font-ar-body);
+}
+
+body.en .timeline-desc { font-family: var(--font-en-body); font-weight: 300; }
+
+/* ─── SKILLS ─── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.skill-tag {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.skill-tag:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.skill-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ─── PROJECTS ─── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.4s;
+  cursor: default;
+}
+
+.project-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.project-thumb {
+  height: 180px;
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, rgba(212,168,85,0.05), transparent);
+}
+
+.project-info { padding: 1.5rem; }
+
+.project-tag {
+  font-size: 0.65rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.project-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.project-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-family: var(--font-ar-body);
+}
+
+body.en .project-desc { font-family: var(--font-en-body); font-weight: 300; }
+
+/* ─── BLOG ─── */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.blog-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.blog-card:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-card-hover);
+  transform: translateY(-3px);
+}
+
+.blog-date {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.8rem;
+}
+
+.blog-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+
+.blog-excerpt {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-family: var(--font-ar-body);
+}
+
+body.en .blog-excerpt { font-family: var(--font-en-body); font-weight: 300; }
+
+.blog-read-more {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.blog-read-more:hover { border-color: var(--accent); }
+
+/* ─── CONTACT ─── */
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.contact-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.contact-info p {
+  color: var(--text-secondary);
+  font-family: var(--font-ar-body);
+  margin-bottom: 2rem;
+  line-height: 2;
+}
+
+body.en .contact-info p { font-family: var(--font-en-body); font-weight: 300; }
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.contact-link:hover { color: var(--accent); }
+
+.contact-link-icon {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.contact-link:hover .contact-link-icon {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.9rem 1.2rem;
+  color: var(--text-primary);
+  font-family: var(--font-ar);
+  font-size: 0.9rem;
+  transition: border-color 0.3s;
+  outline: none;
+}
+
+body.en .form-group input,
+body.en .form-group textarea { font-family: var(--font-en-body); }
+
+.form-group input:focus,
+.form-group textarea:focus { border-color: var(--accent); }
+
+.form-group textarea { resize: vertical; min-height: 120px; }
+
+.form-submit {
+  padding: 0.9rem 2rem;
+  background: var(--accent);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-ar);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  align-self: flex-start;
+}
+
+body.en .form-submit { font-family: var(--font-en-body); align-self: flex-start; }
+
+.form-submit:hover {
+  background: var(--accent-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 168, 85, 0.25);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+footer .footer-accent { color: var(--accent); }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── MOBILE MENU ─── */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(12, 15, 20, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 1.5rem 2rem;
+    gap: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu-btn { display: block; }
+  .about-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+  .projects-grid, .blog-grid { grid-template-columns: 1fr; }
+  section { padding: 4rem 1.5rem; }
+  .timeline { padding-right: 2rem; }
+  body.en .timeline { padding-right: 0; padding-left: 2rem; }
+  .timeline-item::before { right: -2.55rem; }
+  body.en .timeline-item::before { right: auto; left: -2.55rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo" data-ar="أحمد" data-en="Ahmad">أحمد</a>
+  <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about" data-ar="نبذة عني" data-en="About">نبذة عني</a></li>
+    <li><a href="#experience" data-ar="الخبرات" data-en="Experience">الخبرات</a></li>
+    <li><a href="#skills" data-ar="المهارات" data-en="Skills">المهارات</a></li>
+    <li><a href="#projects" data-ar="المشاريع" data-en="Projects">المشاريع</a></li>
+    <li><a href="#blog" data-ar="المدونة" data-en="Blog">المدونة</a></li>
+    <li><a href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a></li>
+    <li><button class="lang-toggle" onclick="toggleLang()">EN</button></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <p class="hero-greeting" data-ar="مرحباً بك" data-en="Welcome">مرحباً بك</p>
+    <h1>
+      <span data-ar="أحمد" data-en="Ahmad">أحمد</span>
+      <span style="-webkit-text-fill-color: var(--text-primary); background: none;" data-ar="مدونة شخصية" data-en="Personal Blog">مدونة شخصية</span>
+    </h1>
+    <p class="hero-subtitle" data-ar="منسق مالي وإداري • مهتم بالتقنية والأمن السيبراني • أشارك هنا أفكاري وتجاربي" data-en="Financial & Administrative Coordinator • Tech & Cybersecurity Enthusiast • Sharing ideas and experiences">منسق مالي وإداري • مهتم بالتقنية والأمن السيبراني • أشارك هنا أفكاري وتجاربي</p>
+    <a href="#about" class="hero-cta" data-ar="تعرّف عليّ ↓" data-en="Learn More ↓">تعرّف عليّ ↓</a>
+  </div>
+  <div class="scroll-hint">
+    <div class="line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="fade-in">
+    <p class="section-label" data-ar="تعرّف عليّ" data-en="Get to know me">تعرّف عليّ</p>
+    <h2 class="section-title" data-ar="نبذة عني" data-en="About Me">نبذة عني</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <p data-ar="أهلاً، أنا أحمد — منسق مالي وإداري أعمل حالياً في أجكوم القابضة. أمتلك خبرة في التعامل مع المنصات الحكومية مثل اعتماد وتنافس، وإدارة الموارد المالية والتسجيل على منصة شمول." data-en="Hi, I'm Ahmad — a Financial and Administrative Coordinator currently working at AJCOM Holding. I have experience with government platforms like Etimad and Tanafus, financial resource management, and supplier registration on the Shumool platform.">أهلاً، أنا أحمد — منسق مالي وإداري أعمل حالياً في أجكوم القابضة. أمتلك خبرة في التعامل مع المنصات الحكومية مثل اعتماد وتنافس، وإدارة الموارد المالية والتسجيل على منصة شمول.</p>
+      <p data-ar="أحمل دبلوم محاسبة من المؤسسة العامة للتدريب التقني والمهني بمعدل 3.97. مهتم بالتقنية والأمن السيبراني، وأسعى لتطوير مهاراتي باستمرار في هذه المجالات." data-en="I hold an Accounting Diploma from the Technical and Vocational Training Corporation (GPA 3.97). I'm passionate about technology and cybersecurity, always striving to grow my skills in these areas.">أحمل دبلوم محاسبة من المؤسسة العامة للتدريب التقني والمهني بمعدل 3.97. مهتم بالتقنية والأمن السيبراني، وأسعى لتطوير مهاراتي باستمرار في هذه المجالات.</p>
+    </div>
+    <div class="about-stats fade-in">
+      <div class="stat-card">
+        <div class="stat-number">3.97</div>
+        <div class="stat-label" data-ar="المعدل التراكمي" data-en="GPA">المعدل التراكمي</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-ar="أجكوم" data-en="AJCOM">أجكوم</div>
+        <div class="stat-label" data-ar="جهة العمل الحالية" data-en="Current Employer">جهة العمل الحالية</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-ar="المحاسبة" data-en="Accounting">المحاسبة</div>
+        <div class="stat-label" data-ar="التخصص" data-en="Major">التخصص</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-ar="الدمام" data-en="Dammam">الدمام</div>
+        <div class="stat-label" data-ar="الموقع" data-en="Location">الموقع</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="fade-in">
+    <p class="section-label" data-ar="المسيرة المهنية" data-en="Career Path">المسيرة المهنية</p>
+    <h2 class="section-title" data-ar="الخبرات" data-en="Experience">الخبرات</h2>
+  </div>
+  <div class="timeline fade-in">
+    <div class="timeline-item">
+      <div class="timeline-date" data-ar="الحالي" data-en="Present">الحالي</div>
+      <div class="timeline-role" data-ar="منسق مالي وإداري" data-en="Financial & Administrative Coordinator">منسق مالي وإداري</div>
+      <div class="timeline-company" data-ar="أجكوم القابضة" data-en="AJCOM Holding">أجكوم القابضة</div>
+      <div class="timeline-desc" data-ar="إدارة العمليات المالية والإدارية، التعامل مع منصات المناقصات الحكومية (اعتماد وتنافس)، إدارة تسجيل الموردين والعملاء على منصة شمول، والمساهمة في مبادرات المسؤولية الاجتماعية." data-en="Managing financial and administrative operations, handling government tender platforms (Etimad & Tanafus), managing supplier/client registration on Shumool platform, and contributing to CSR initiatives.">إدارة العمليات المالية والإدارية، التعامل مع منصات المناقصات الحكومية (اعتماد وتنافس)، إدارة تسجيل الموردين والعملاء على منصة شمول، والمساهمة في مبادرات المسؤولية الاجتماعية.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date" data-ar="التعليم" data-en="Education">التعليم</div>
+      <div class="timeline-role" data-ar="دبلوم محاسبة" data-en="Accounting Diploma">دبلوم محاسبة</div>
+      <div class="timeline-company" data-ar="المؤسسة العامة للتدريب التقني والمهني — الدمام" data-en="Technical & Vocational Training Corp — Dammam">المؤسسة العامة للتدريب التقني والمهني — الدمام</div>
+      <div class="timeline-desc" data-ar="تخرجت بمعدل تراكمي 3.97 من 4.00 مع تأسيس قوي في المحاسبة والإدارة المالية." data-en="Graduated with a 3.97/4.00 GPA with a strong foundation in accounting and financial management.">تخرجت بمعدل تراكمي 3.97 من 4.00 مع تأسيس قوي في المحاسبة والإدارة المالية.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="fade-in">
+    <p class="section-label" data-ar="ما أتقنه" data-en="What I Do">ما أتقنه</p>
+    <h2 class="section-title" data-ar="المهارات" data-en="Skills">المهارات</h2>
+  </div>
+  <div class="skills-grid fade-in">
+    <div class="skill-tag"><span class="skill-dot"></span><span data-ar="إدارة مالية" data-en="Financial Management">إدارة مالية</span></div>
+    <div class="skill-tag"><span class="skill-dot"></span><span data-ar="المنصات الحكومية" data-en="Government Platforms">المنصات الحكومية</span></div>
+    <div class="skill-tag"><span class="skill-dot"></span><span data-ar="Microsoft Excel" data-en="Microsoft Excel">Microsoft Excel</span></div>
+    <div class="skill-tag"><span class="skill-dot"></span><span data-ar="المشتريات والعقود" data-en="Procurement & Contracts">المشتريات والعقود</span></div>
+    <div class="skill-tag"><span class="skill-dot"></span><span data-ar="الأمن السيبراني" data-en="Cybersecurity">الأمن السيبراني</span></div>
+    <div class="skill-tag"><span class="skill-dot"></span><span data-ar="تحليل البيانات" data-en="Data Analysis">تحليل البيانات</span></div>
+    <div class="skill-tag"><span class="skill-dot"></span><span data-ar="التنسيق الإداري" data-en="Administrative Coordination">التنسيق الإداري</span></div>
+    <div class="skill-tag"><span class="skill-dot"></span><span data-ar="إعداد التقارير" data-en="Reporting">إعداد التقارير</span></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="fade-in">
+    <p class="section-label" data-ar="أعمالي" data-en="My Work">أعمالي</p>
+    <h2 class="section-title" data-ar="المشاريع" data-en="Projects">المشاريع</h2>
+  </div>
+  <div class="projects-grid fade-in">
+    <div class="project-card">
+      <div class="project-thumb">📊</div>
+      <div class="project-info">
+        <div class="project-tag" data-ar="داشبورد" data-en="Dashboard">داشبورد</div>
+        <div class="project-name" data-ar="لوحة مؤشرات واحة المستهلك" data-en="Consumer Oasis KPI Dashboard">لوحة مؤشرات واحة المستهلك</div>
+        <div class="project-desc" data-ar="داشبورد Excel متكامل لخطة التحول الرقمي 2026 مع مؤشرات أداء ورسوم بيانية ديناميكية." data-en="A comprehensive Excel dashboard for the 2026 digital transformation plan with KPI cards and dynamic charts.">داشبورد Excel متكامل لخطة التحول الرقمي 2026 مع مؤشرات أداء ورسوم بيانية ديناميكية.</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">📋</div>
+      <div class="project-info">
+        <div class="project-tag" data-ar="إدارة مهام" data-en="Task Management">إدارة مهام</div>
+        <div class="project-name" data-ar="نظام تتبع المهام" data-en="Task Tracking System">نظام تتبع المهام</div>
+        <div class="project-desc" data-ar="ملف Excel منظم لتتبع مهام الفريق مع صيغ ورسوم بيانية لقياس الإنجاز." data-en="A structured Excel workbook for team task tracking with formulas and charts to measure progress.">ملف Excel منظم لتتبع مهام الفريق مع صيغ ورسوم بيانية لقياس الإنجاز.</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">📄</div>
+      <div class="project-info">
+        <div class="project-tag" data-ar="عقود" data-en="Contracts">عقود</div>
+        <div class="project-name" data-ar="عقود ووثائق مشتريات" data-en="Procurement Documents & Contracts">عقود ووثائق مشتريات</div>
+        <div class="project-desc" data-ar="إعداد عقود إيجار ووثائق مشتريات ومراجعة حسابات عقود توريد حكومية متعددة السنوات." data-en="Drafting lease contracts, procurement documents, and auditing multi-year government supply contracts.">إعداد عقود إيجار ووثائق مشتريات ومراجعة حسابات عقود توريد حكومية متعددة السنوات.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="fade-in">
+    <p class="section-label" data-ar="آخر المقالات" data-en="Latest Posts">آخر المقالات</p>
+    <h2 class="section-title" data-ar="المدونة" data-en="Blog">المدونة</h2>
+  </div>
+  <div class="blog-grid fade-in">
+    <div class="blog-card">
+      <div class="blog-date">2026 / 04</div>
+      <div class="blog-title" data-ar="قريباً — أول تدوينة!" data-en="Coming Soon — First Post!">قريباً — أول تدوينة!</div>
+      <div class="blog-excerpt" data-ar="سأبدأ بمشاركة تجربتي المهنية وأفكاري حول التقنية والأمن السيبراني. ترقبوا المزيد..." data-en="I'll be sharing my professional journey and thoughts on technology and cybersecurity. Stay tuned...">سأبدأ بمشاركة تجربتي المهنية وأفكاري حول التقنية والأمن السيبراني. ترقبوا المزيد...</div>
+      <a href="#" class="blog-read-more" data-ar="اقرأ المزيد →" data-en="Read More →">اقرأ المزيد →</a>
+    </div>
+    <div class="blog-card">
+      <div class="blog-date">—</div>
+      <div class="blog-title" data-ar="هذا المكان لمقالاتك القادمة" data-en="Space for your upcoming articles">هذا المكان لمقالاتك القادمة</div>
+      <div class="blog-excerpt" data-ar="يمكنك إضافة تدوينات جديدة بسهولة بنسخ نفس البنية الموجودة في الكود." data-en="You can easily add new posts by copying the existing card structure in the code.">يمكنك إضافة تدوينات جديدة بسهولة بنسخ نفس البنية الموجودة في الكود.</div>
+      <a href="#" class="blog-read-more" data-ar="اقرأ المزيد →" data-en="Read More →">اقرأ المزيد →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="fade-in">
+    <p class="section-label" data-ar="تواصل معي" data-en="Get in Touch">تواصل معي</p>
+    <h2 class="section-title" data-ar="طريقة التواصل" data-en="Contact">طريقة التواصل</h2>
+  </div>
+  <div class="contact-wrapper fade-in">
+    <div class="contact-info">
+      <h3 data-ar="أرسل لي رسالة" data-en="Send me a message">أرسل لي رسالة</h3>
+      <p data-ar="أسعد دائماً بالتواصل معك. سواء كان لديك سؤال أو فرصة تعاون أو مجرد سلام، لا تتردد!" data-en="I'm always happy to hear from you. Whether you have a question, a collaboration opportunity, or just want to say hi — don't hesitate!">أسعد دائماً بالتواصل معك. سواء كان لديك سؤال أو فرصة تعاون أو مجرد سلام، لا تتردد!</p>
+      <div class="contact-links">
+        <a href="mailto:your@email.com" class="contact-link">
+          <span class="contact-link-icon">✉</span>
+          <span>your@email.com</span>
+        </a>
+        <a href="https://linkedin.com/in/yourprofile" class="contact-link" target="_blank">
+          <span class="contact-link-icon">in</span>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://twitter.com/yourhandle" class="contact-link" target="_blank">
+          <span class="contact-link-icon">𝕏</span>
+          <span>𝕏 / Twitter</span>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-group">
+        <input type="text" placeholder="الاسم" data-ar-ph="الاسم" data-en-ph="Name">
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="البريد الإلكتروني" data-ar-ph="البريد الإلكتروني" data-en-ph="Email">
+      </div>
+      <div class="form-group">
+        <textarea placeholder="رسالتك..." data-ar-ph="رسالتك..." data-en-ph="Your message..."></textarea>
+      </div>
+      <button class="form-submit" data-ar="إرسال" data-en="Send">إرسال</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><span data-ar="صُمم بـ" data-en="Designed with">صُمم بـ</span> <span class="footer-accent">♦</span> <span data-ar="بواسطة أحمد" data-en="by Ahmad">بواسطة أحمد</span> — 2026</p>
+</footer>
+
+<script>
+let lang = 'ar';
+
+function toggleLang() {
+  lang = lang === 'ar' ? 'en' : 'ar';
+  const body = document.body;
+  const html = document.documentElement;
+
+  if (lang === 'en') {
+    body.classList.add('en');
+    html.setAttribute('dir', 'ltr');
+    html.setAttribute('lang', 'en');
+  } else {
+    body.classList.remove('en');
+    html.setAttribute('dir', 'rtl');
+    html.setAttribute('lang', 'ar');
+  }
+
+  // Update toggle button
+  document.querySelector('.lang-toggle').textContent = lang === 'ar' ? 'EN' : 'عربي';
+
+  // Update all translatable elements
+  document.querySelectorAll('[data-ar]').forEach(el => {
+    el.textContent = el.getAttribute(`data-${lang}`);
+  });
+
+  // Update placeholders
+  document.querySelectorAll('[data-ar-ph]').forEach(el => {
+    el.placeholder = el.getAttribute(`data-${lang}-ph`);
+  });
+}
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Mobile menu
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// Close mobile menu on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
