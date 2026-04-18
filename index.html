@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>أحمد | مدونة شخصية</title>
+<title>أحمد عبدالله علي | مدونة شخصية</title>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Kufi+Arabic:wght@300;400;600;700;800&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -26,7 +26,6 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -40,12 +39,10 @@ body {
 body.en { font-family: var(--font-en-body); direction: ltr; }
 body.en h1, body.en h2, body.en h3 { font-family: var(--font-en); }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-primary); }
 ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
 
-/* Noise overlay */
 body::before {
   content: '';
   position: fixed;
@@ -55,7 +52,6 @@ body::before {
   z-index: 9999;
 }
 
-/* ─── NAV ─── */
 nav {
   position: fixed;
   top: 0;
@@ -131,7 +127,6 @@ body.en .nav-links a::after { right: auto; left: 0; }
   color: var(--bg-primary);
 }
 
-/* ─── HERO ─── */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -154,7 +149,7 @@ body.en .nav-links a::after { right: auto; left: 0; }
   pointer-events: none;
 }
 
-.hero-content { position: relative; z-index: 1; }
+.hero-content { position: relative; z-index: 1; max-width: 800px; }
 
 .hero-greeting {
   font-size: 1rem;
@@ -167,7 +162,7 @@ body.en .nav-links a::after { right: auto; left: 0; }
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(2.2rem, 5.5vw, 4.5rem);
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 1rem;
@@ -177,24 +172,48 @@ body.en .nav-links a::after { right: auto; left: 0; }
 
 body.en .hero h1 { font-family: var(--font-en); font-weight: 400; }
 
-.hero h1 span {
+.hero h1 span.highlight {
   display: block;
   background: linear-gradient(135deg, var(--accent), #F0D48A);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+  font-weight: 500;
+  margin-top: 0.8rem;
 }
 
 .hero-subtitle {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--text-secondary);
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto 2.5rem;
   font-family: var(--font-ar-body);
   opacity: 0;
   animation: fadeUp 0.8s 0.6s forwards;
+  line-height: 2;
 }
 
 body.en .hero-subtitle { font-family: var(--font-en-body); font-weight: 300; }
+
+.hero-badges {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.7s forwards;
+}
+
+.hero-badge {
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  color: var(--accent);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
 
 .hero-cta {
   display: inline-flex;
@@ -240,7 +259,6 @@ body.en .hero-subtitle { font-family: var(--font-en-body); font-weight: 300; }
   background: linear-gradient(to bottom, var(--accent-dim), transparent);
 }
 
-/* ─── SECTIONS ─── */
 section {
   padding: 6rem 2rem;
   max-width: 1100px;
@@ -273,10 +291,9 @@ body.en .section-title { font-family: var(--font-en); font-weight: 400; }
   margin-top: 1rem;
 }
 
-/* ─── ABOUT ─── */
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.3fr 1fr;
   gap: 4rem;
   align-items: start;
 }
@@ -312,7 +329,7 @@ body.en .about-text p { font-family: var(--font-en-body); font-weight: 300; line
 }
 
 .stat-number {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 800;
   color: var(--accent);
   line-height: 1;
@@ -324,9 +341,9 @@ body.en .stat-number { font-family: var(--font-en); }
 .stat-label {
   font-size: 0.8rem;
   color: var(--text-muted);
+  line-height: 1.5;
 }
 
-/* ─── EXPERIENCE ─── */
 .timeline {
   position: relative;
   padding-right: 3rem;
@@ -348,7 +365,7 @@ body.en .timeline::before { right: auto; left: 0; }
 
 .timeline-item {
   position: relative;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   padding: 2rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -403,18 +420,44 @@ body.en .timeline-item::before { right: auto; left: -3.55rem; }
 
 body.en .timeline-desc { font-family: var(--font-en-body); font-weight: 300; }
 
-/* ─── SKILLS ─── */
+.timeline-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.timeline-tag {
+  font-size: 0.7rem;
+  padding: 0.3rem 0.7rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-secondary);
+}
+
+.skills-category {
+  margin-bottom: 2.5rem;
+}
+
+.skills-category-title {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.8rem;
 }
 
 .skill-tag {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  padding: 1rem 1.2rem;
+  padding: 0.9rem 1.1rem;
   border-radius: 6px;
   font-size: 0.85rem;
   color: var(--text-secondary);
@@ -438,7 +481,67 @@ body.en .timeline-desc { font-family: var(--font-en-body); font-weight: 300; }
   flex-shrink: 0;
 }
 
-/* ─── PROJECTS ─── */
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.cert-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.8rem;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at top right, var(--accent-glow), transparent 70%);
+  pointer-events: none;
+}
+
+body.en .cert-card::before { right: auto; left: 0; background: radial-gradient(circle at top left, var(--accent-glow), transparent 70%); }
+
+.cert-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+}
+
+.cert-icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+.cert-name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+
+.cert-issuer {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+}
+
+.cert-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--border);
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -451,7 +554,6 @@ body.en .timeline-desc { font-family: var(--font-en-body); font-weight: 300; }
   border-radius: 10px;
   overflow: hidden;
   transition: all 0.4s;
-  cursor: default;
 }
 
 .project-card:hover {
@@ -461,7 +563,7 @@ body.en .timeline-desc { font-family: var(--font-en-body); font-weight: 300; }
 }
 
 .project-thumb {
-  height: 180px;
+  height: 160px;
   background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
   display: flex;
   align-items: center;
@@ -490,7 +592,7 @@ body.en .timeline-desc { font-family: var(--font-en-body); font-weight: 300; }
 }
 
 .project-name {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
@@ -504,7 +606,6 @@ body.en .timeline-desc { font-family: var(--font-en-body); font-weight: 300; }
 
 body.en .project-desc { font-family: var(--font-en-body); font-weight: 300; }
 
-/* ─── BLOG ─── */
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -534,7 +635,7 @@ body.en .project-desc { font-family: var(--font-en-body); font-weight: 300; }
 }
 
 .blog-title {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.6rem;
   line-height: 1.5;
@@ -561,7 +662,6 @@ body.en .blog-excerpt { font-family: var(--font-en-body); font-weight: 300; }
 
 .blog-read-more:hover { border-color: var(--accent); }
 
-/* ─── CONTACT ─── */
 .contact-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -659,7 +759,7 @@ body.en .form-group textarea { font-family: var(--font-en-body); }
   align-self: flex-start;
 }
 
-body.en .form-submit { font-family: var(--font-en-body); align-self: flex-start; }
+body.en .form-submit { font-family: var(--font-en-body); }
 
 .form-submit:hover {
   background: var(--accent-dim);
@@ -667,7 +767,6 @@ body.en .form-submit { font-family: var(--font-en-body); align-self: flex-start;
   box-shadow: 0 8px 25px rgba(212, 168, 85, 0.25);
 }
 
-/* ─── FOOTER ─── */
 footer {
   text-align: center;
   padding: 3rem 2rem;
@@ -678,7 +777,6 @@ footer {
 
 footer .footer-accent { color: var(--accent); }
 
-/* ─── ANIMATIONS ─── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(25px); }
   to { opacity: 1; transform: translateY(0); }
@@ -700,7 +798,6 @@ footer .footer-accent { color: var(--accent); }
   transform: translateY(0);
 }
 
-/* ─── MOBILE MENU ─── */
 .mobile-menu-btn {
   display: none;
   background: none;
@@ -710,7 +807,6 @@ footer .footer-accent { color: var(--accent); }
   cursor: pointer;
 }
 
-/* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-links.open {
@@ -728,7 +824,7 @@ footer .footer-accent { color: var(--accent); }
   }
   .mobile-menu-btn { display: block; }
   .about-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
-  .projects-grid, .blog-grid { grid-template-columns: 1fr; }
+  .projects-grid, .blog-grid, .certs-grid { grid-template-columns: 1fr; }
   section { padding: 4rem 1.5rem; }
   .timeline { padding-right: 2rem; }
   body.en .timeline { padding-right: 0; padding-left: 2rem; }
@@ -739,14 +835,14 @@ footer .footer-accent { color: var(--accent); }
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="navbar">
-  <a href="#hero" class="nav-logo" data-ar="أحمد" data-en="Ahmad">أحمد</a>
+  <a href="#hero" class="nav-logo" data-ar="أحمد علي" data-en="Ahmed Ali">أحمد علي</a>
   <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#about" data-ar="نبذة عني" data-en="About">نبذة عني</a></li>
+    <li><a href="#about" data-ar="نبذة" data-en="About">نبذة</a></li>
     <li><a href="#experience" data-ar="الخبرات" data-en="Experience">الخبرات</a></li>
     <li><a href="#skills" data-ar="المهارات" data-en="Skills">المهارات</a></li>
+    <li><a href="#certs" data-ar="الشهادات" data-en="Certifications">الشهادات</a></li>
     <li><a href="#projects" data-ar="المشاريع" data-en="Projects">المشاريع</a></li>
     <li><a href="#blog" data-ar="المدونة" data-en="Blog">المدونة</a></li>
     <li><a href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a></li>
@@ -754,15 +850,18 @@ footer .footer-accent { color: var(--accent); }
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-content">
-    <p class="hero-greeting" data-ar="مرحباً بك" data-en="Welcome">مرحباً بك</p>
+    <p class="hero-greeting" data-ar="أهلاً بك" data-en="Welcome">أهلاً بك</p>
     <h1>
-      <span data-ar="أحمد" data-en="Ahmad">أحمد</span>
-      <span style="-webkit-text-fill-color: var(--text-primary); background: none;" data-ar="مدونة شخصية" data-en="Personal Blog">مدونة شخصية</span>
+      <span data-ar="أحمد عبدالله علي" data-en="Ahmed Abdullah Ali">أحمد عبدالله علي</span>
+      <span class="highlight" data-ar="منسق مالي وإداري" data-en="Financial & Administrative Coordinator">منسق مالي وإداري</span>
     </h1>
-    <p class="hero-subtitle" data-ar="منسق مالي وإداري • مهتم بالتقنية والأمن السيبراني • أشارك هنا أفكاري وتجاربي" data-en="Financial & Administrative Coordinator • Tech & Cybersecurity Enthusiast • Sharing ideas and experiences">منسق مالي وإداري • مهتم بالتقنية والأمن السيبراني • أشارك هنا أفكاري وتجاربي</p>
+    <div class="hero-badges">
+      <span class="hero-badge" data-ar="عضو منتسب في SOCPA" data-en="SOCPA Associate Member">عضو منتسب في SOCPA</span>
+      <span class="hero-badge" data-ar="أخصائي اعتماد وتنافس" data-en="Etimad & Tanafus Specialist">أخصائي اعتماد وتنافس</span>
+    </div>
+    <p class="hero-subtitle" data-ar="مدونة شخصية لمشاركة رحلتي المهنية في المحاسبة، الإدارة المالية، وعمليات المشتريات الحكومية." data-en="A personal blog sharing my journey in accounting, financial management, and government procurement operations.">مدونة شخصية لمشاركة رحلتي المهنية في المحاسبة، الإدارة المالية، وعمليات المشتريات الحكومية.</p>
     <a href="#about" class="hero-cta" data-ar="تعرّف عليّ ↓" data-en="Learn More ↓">تعرّف عليّ ↓</a>
   </div>
   <div class="scroll-hint">
@@ -770,7 +869,6 @@ footer .footer-accent { color: var(--accent); }
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="fade-in">
     <p class="section-label" data-ar="تعرّف عليّ" data-en="Get to know me">تعرّف عليّ</p>
@@ -778,8 +876,9 @@ footer .footer-accent { color: var(--accent); }
   </div>
   <div class="about-grid">
     <div class="about-text fade-in">
-      <p data-ar="أهلاً، أنا أحمد — منسق مالي وإداري أعمل حالياً في أجكوم القابضة. أمتلك خبرة في التعامل مع المنصات الحكومية مثل اعتماد وتنافس، وإدارة الموارد المالية والتسجيل على منصة شمول." data-en="Hi, I'm Ahmad — a Financial and Administrative Coordinator currently working at AJCOM Holding. I have experience with government platforms like Etimad and Tanafus, financial resource management, and supplier registration on the Shumool platform.">أهلاً، أنا أحمد — منسق مالي وإداري أعمل حالياً في أجكوم القابضة. أمتلك خبرة في التعامل مع المنصات الحكومية مثل اعتماد وتنافس، وإدارة الموارد المالية والتسجيل على منصة شمول.</p>
-      <p data-ar="أحمل دبلوم محاسبة من المؤسسة العامة للتدريب التقني والمهني بمعدل 3.97. مهتم بالتقنية والأمن السيبراني، وأسعى لتطوير مهاراتي باستمرار في هذه المجالات." data-en="I hold an Accounting Diploma from the Technical and Vocational Training Corporation (GPA 3.97). I'm passionate about technology and cybersecurity, always striving to grow my skills in these areas.">أحمل دبلوم محاسبة من المؤسسة العامة للتدريب التقني والمهني بمعدل 3.97. مهتم بالتقنية والأمن السيبراني، وأسعى لتطوير مهاراتي باستمرار في هذه المجالات.</p>
+      <p data-ar="أحمد عبدالله علي، عضو منتسب في الهيئة السعودية للمراجعين والمحاسبين (SOCPA)، خريج تخصص المحاسبة من الكلية التقنية بالدمام بمعدل 3.97، وأشغل حالياً منصب مدير التنسيق المالي والإداري في شركة أجكوم القابضة." data-en="Ahmed Abdullah Ali — Associate Member of the Saudi Organization for Chartered and Professional Accountants (SOCPA), Accounting graduate from the Technical College in Dammam with a 3.97 GPA, currently serving as Financial and Administrative Coordination Manager at AJCOM Holding.">أحمد عبدالله علي، عضو منتسب في الهيئة السعودية للمراجعين والمحاسبين (SOCPA)، خريج تخصص المحاسبة من الكلية التقنية بالدمام بمعدل 3.97، وأشغل حالياً منصب مدير التنسيق المالي والإداري في شركة أجكوم القابضة.</p>
+      <p data-ar="تتمحور مسؤولياتي حول إدارة العمليات المالية والإدارية بدقة، بدءاً من متابعة المنافسات الحكومية عبر منصتي اعتماد وتنافس، مروراً بإدارة خزينة الشركة والعهد المالية، ووصولاً إلى تنسيق مبادرات المسؤولية الاجتماعية مع الجمعيات الخيرية." data-en="My responsibilities focus on managing financial and administrative operations with precision — from tracking government tenders via Etimad and Tanafus platforms, to managing corporate treasury and petty cash, to coordinating CSR initiatives with charitable organizations.">تتمحور مسؤولياتي حول إدارة العمليات المالية والإدارية بدقة، بدءاً من متابعة المنافسات الحكومية عبر منصتي اعتماد وتنافس، مروراً بإدارة خزينة الشركة والعهد المالية، ووصولاً إلى تنسيق مبادرات المسؤولية الاجتماعية مع الجمعيات الخيرية.</p>
+      <p data-ar="هدفي الحفاظ على استقرار النظام المالي ودعم كفاءة الإدارة، مع الالتزام الدائم بالأمانة المهنية." data-en="My goal is to maintain financial system stability and support administrative efficiency, always committed to professional integrity.">هدفي الحفاظ على استقرار النظام المالي ودعم كفاءة الإدارة، مع الالتزام الدائم بالأمانة المهنية.</p>
     </div>
     <div class="about-stats fade-in">
       <div class="stat-card">
@@ -787,62 +886,124 @@ footer .footer-accent { color: var(--accent); }
         <div class="stat-label" data-ar="المعدل التراكمي" data-en="GPA">المعدل التراكمي</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number" data-ar="أجكوم" data-en="AJCOM">أجكوم</div>
-        <div class="stat-label" data-ar="جهة العمل الحالية" data-en="Current Employer">جهة العمل الحالية</div>
+        <div class="stat-number" data-ar="+٣ سنوات" data-en="3+ Years">+٣ سنوات</div>
+        <div class="stat-label" data-ar="خبرة عملية" data-en="Experience">خبرة عملية</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number" data-ar="المحاسبة" data-en="Accounting">المحاسبة</div>
-        <div class="stat-label" data-ar="التخصص" data-en="Major">التخصص</div>
+        <div class="stat-number">SOCPA</div>
+        <div class="stat-label" data-ar="عضو منتسب" data-en="Associate Member">عضو منتسب</div>
       </div>
       <div class="stat-card">
         <div class="stat-number" data-ar="الدمام" data-en="Dammam">الدمام</div>
-        <div class="stat-label" data-ar="الموقع" data-en="Location">الموقع</div>
+        <div class="stat-label" data-ar="المنطقة الشرقية" data-en="Eastern Province">المنطقة الشرقية</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience">
   <div class="fade-in">
     <p class="section-label" data-ar="المسيرة المهنية" data-en="Career Path">المسيرة المهنية</p>
     <h2 class="section-title" data-ar="الخبرات" data-en="Experience">الخبرات</h2>
   </div>
   <div class="timeline fade-in">
+
     <div class="timeline-item">
-      <div class="timeline-date" data-ar="الحالي" data-en="Present">الحالي</div>
-      <div class="timeline-role" data-ar="منسق مالي وإداري" data-en="Financial & Administrative Coordinator">منسق مالي وإداري</div>
-      <div class="timeline-company" data-ar="أجكوم القابضة" data-en="AJCOM Holding">أجكوم القابضة</div>
-      <div class="timeline-desc" data-ar="إدارة العمليات المالية والإدارية، التعامل مع منصات المناقصات الحكومية (اعتماد وتنافس)، إدارة تسجيل الموردين والعملاء على منصة شمول، والمساهمة في مبادرات المسؤولية الاجتماعية." data-en="Managing financial and administrative operations, handling government tender platforms (Etimad & Tanafus), managing supplier/client registration on Shumool platform, and contributing to CSR initiatives.">إدارة العمليات المالية والإدارية، التعامل مع منصات المناقصات الحكومية (اعتماد وتنافس)، إدارة تسجيل الموردين والعملاء على منصة شمول، والمساهمة في مبادرات المسؤولية الاجتماعية.</div>
+      <div class="timeline-date" data-ar="يناير ٢٠٢٦ — حتى الآن" data-en="January 2026 — Present">يناير ٢٠٢٦ — حتى الآن</div>
+      <div class="timeline-role" data-ar="مدير التنسيق المالي والإداري" data-en="Financial & Administrative Coordination Manager">مدير التنسيق المالي والإداري</div>
+      <div class="timeline-company" data-ar="أجكوم القابضة · الدمام · دوام مختلط" data-en="AJCOM Holding · Dammam · Hybrid">أجكوم القابضة · الدمام · دوام مختلط</div>
+      <div class="timeline-desc" data-ar="حلقة الوصل الأساسية لضمان سير العمليات المالية والإدارية بدقة: متابعة المنافسات الحكومية عبر اعتماد وتنافس، إدارة خزينة الشركة والحساب البنكي والعهد المالية، تسجيل الموردين والعملاء في منصة شمول، وتنسيق مبادرات المسؤولية الاجتماعية مع الجمعيات الخيرية." data-en="Primary coordination point ensuring smooth financial and administrative operations: tracking government tenders on Etimad and Tanafus, managing corporate treasury, bank accounts, and petty cash, registering suppliers and clients on Shumool platform, and coordinating CSR initiatives with charitable organizations.">حلقة الوصل الأساسية لضمان سير العمليات المالية والإدارية بدقة: متابعة المنافسات الحكومية عبر اعتماد وتنافس، إدارة خزينة الشركة والحساب البنكي والعهد المالية، تسجيل الموردين والعملاء في منصة شمول، وتنسيق مبادرات المسؤولية الاجتماعية مع الجمعيات الخيرية.</div>
+      <div class="timeline-tags">
+        <span class="timeline-tag" data-ar="اعتماد" data-en="Etimad">اعتماد</span>
+        <span class="timeline-tag" data-ar="تنافس" data-en="Tanafus">تنافس</span>
+        <span class="timeline-tag" data-ar="شمول" data-en="Shumool">شمول</span>
+        <span class="timeline-tag" data-ar="CSR" data-en="CSR">CSR</span>
+      </div>
     </div>
+
     <div class="timeline-item">
-      <div class="timeline-date" data-ar="التعليم" data-en="Education">التعليم</div>
-      <div class="timeline-role" data-ar="دبلوم محاسبة" data-en="Accounting Diploma">دبلوم محاسبة</div>
-      <div class="timeline-company" data-ar="المؤسسة العامة للتدريب التقني والمهني — الدمام" data-en="Technical & Vocational Training Corp — Dammam">المؤسسة العامة للتدريب التقني والمهني — الدمام</div>
-      <div class="timeline-desc" data-ar="تخرجت بمعدل تراكمي 3.97 من 4.00 مع تأسيس قوي في المحاسبة والإدارة المالية." data-en="Graduated with a 3.97/4.00 GPA with a strong foundation in accounting and financial management.">تخرجت بمعدل تراكمي 3.97 من 4.00 مع تأسيس قوي في المحاسبة والإدارة المالية.</div>
+      <div class="timeline-date" data-ar="ديسمبر ٢٠٢٢ — يناير ٢٠٢٦" data-en="December 2022 — January 2026">ديسمبر ٢٠٢٢ — يناير ٢٠٢٦</div>
+      <div class="timeline-role" data-ar="كاشير" data-en="Cashier">كاشير</div>
+      <div class="timeline-company" data-ar="٣ سنوات و ٢ أشهر" data-en="3 years 2 months">٣ سنوات و ٢ أشهر</div>
+      <div class="timeline-desc" data-ar="اكتسبت خبرة متعددة في خدمة العملاء، فهم سوق العمل ورغبات المستهلك، والإلمام بالقطاع الغذائي من الجملة إلى التجزئة، إضافة إلى الجرد والإشراف على الفرع." data-en="Gained diverse experience in customer service, market understanding, consumer behavior, and comprehensive knowledge of the food sector from wholesale to retail, in addition to inventory management and branch supervision.">اكتسبت خبرة متعددة في خدمة العملاء، فهم سوق العمل ورغبات المستهلك، والإلمام بالقطاع الغذائي من الجملة إلى التجزئة، إضافة إلى الجرد والإشراف على الفرع.</div>
     </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date" data-ar="ديسمبر ٢٠٢٣ — سبتمبر ٢٠٢٥" data-en="December 2023 — September 2025">ديسمبر ٢٠٢٣ — سبتمبر ٢٠٢٥</div>
+      <div class="timeline-role" data-ar="دبلوم محاسبة — Accounting" data-en="Accounting Diploma">دبلوم محاسبة — Accounting</div>
+      <div class="timeline-company" data-ar="المؤسسة العامة للتدريب التقني والمهني — الدمام" data-en="Technical & Vocational Training Corp. — Dammam">المؤسسة العامة للتدريب التقني والمهني — الدمام</div>
+      <div class="timeline-desc" data-ar="تخرجت بمعدل تراكمي 3.97 من 4.00 مع تأسيس قوي في المحاسبة المالية، الإكسل، وحل المشكلات." data-en="Graduated with a 3.97/4.00 GPA with a strong foundation in financial accounting, Excel, and problem solving.">تخرجت بمعدل تراكمي 3.97 من 4.00 مع تأسيس قوي في المحاسبة المالية، الإكسل، وحل المشكلات.</div>
+    </div>
+
   </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
   <div class="fade-in">
     <p class="section-label" data-ar="ما أتقنه" data-en="What I Do">ما أتقنه</p>
     <h2 class="section-title" data-ar="المهارات" data-en="Skills">المهارات</h2>
   </div>
-  <div class="skills-grid fade-in">
-    <div class="skill-tag"><span class="skill-dot"></span><span data-ar="إدارة مالية" data-en="Financial Management">إدارة مالية</span></div>
-    <div class="skill-tag"><span class="skill-dot"></span><span data-ar="المنصات الحكومية" data-en="Government Platforms">المنصات الحكومية</span></div>
-    <div class="skill-tag"><span class="skill-dot"></span><span data-ar="Microsoft Excel" data-en="Microsoft Excel">Microsoft Excel</span></div>
-    <div class="skill-tag"><span class="skill-dot"></span><span data-ar="المشتريات والعقود" data-en="Procurement & Contracts">المشتريات والعقود</span></div>
-    <div class="skill-tag"><span class="skill-dot"></span><span data-ar="الأمن السيبراني" data-en="Cybersecurity">الأمن السيبراني</span></div>
-    <div class="skill-tag"><span class="skill-dot"></span><span data-ar="تحليل البيانات" data-en="Data Analysis">تحليل البيانات</span></div>
-    <div class="skill-tag"><span class="skill-dot"></span><span data-ar="التنسيق الإداري" data-en="Administrative Coordination">التنسيق الإداري</span></div>
-    <div class="skill-tag"><span class="skill-dot"></span><span data-ar="إعداد التقارير" data-en="Reporting">إعداد التقارير</span></div>
+
+  <div class="fade-in">
+    <div class="skills-category">
+      <div class="skills-category-title" data-ar="المهارات المالية والمحاسبية" data-en="Financial & Accounting">المهارات المالية والمحاسبية</div>
+      <div class="skills-grid">
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="التحليل المالي" data-en="Financial Analysis">التحليل المالي</span></div>
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="المحاسبة المالية" data-en="Financial Accounting">المحاسبة المالية</span></div>
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="الذمم الدائنة والمدينة" data-en="Accounts Payable & Receivable">الذمم الدائنة والمدينة</span></div>
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="إدارة الخزينة والنقد" data-en="Treasury & Cash Management">إدارة الخزينة والنقد</span></div>
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="برامج ERP المحاسبية" data-en="ERP & Accounting Software">برامج ERP المحاسبية</span></div>
+      </div>
+    </div>
+
+    <div class="skills-category">
+      <div class="skills-category-title" data-ar="المهارات الإدارية والتشغيلية" data-en="Administrative & Operational">المهارات الإدارية والتشغيلية</div>
+      <div class="skills-grid">
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="إدارة المنافسات الحكومية" data-en="Government Procurement">إدارة المنافسات الحكومية</span></div>
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="التنسيق الإداري" data-en="Admin Coordination">التنسيق الإداري</span></div>
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="سلاسل الإمداد واللوجستيات" data-en="Supply Chain & Logistics">سلاسل الإمداد واللوجستيات</span></div>
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="المسؤولية الاجتماعية CSR" data-en="CSR Management">المسؤولية الاجتماعية CSR</span></div>
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="إدارة الفرع" data-en="Branch Management">إدارة الفرع</span></div>
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="إدارة الفريق" data-en="Team Management">إدارة الفريق</span></div>
+      </div>
+    </div>
+
+    <div class="skills-category">
+      <div class="skills-category-title" data-ar="المهارات التقنية والشخصية" data-en="Technical & Soft Skills">المهارات التقنية والشخصية</div>
+      <div class="skills-grid">
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="Microsoft Excel" data-en="Microsoft Excel">Microsoft Excel</span></div>
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="Microsoft Office" data-en="Microsoft Office">Microsoft Office</span></div>
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="الدقة والانتباه للتفاصيل" data-en="Attention to Detail">الدقة والانتباه للتفاصيل</span></div>
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="التواصل الفعال" data-en="Effective Communication">التواصل الفعال</span></div>
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="حل المشكلات" data-en="Problem Solving">حل المشكلات</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<section id="certs">
+  <div class="fade-in">
+    <p class="section-label" data-ar="الاعتمادات المهنية" data-en="Credentials">الاعتمادات المهنية</p>
+    <h2 class="section-title" data-ar="الترخيصات والشهادات" data-en="Certifications">الترخيصات والشهادات</h2>
+  </div>
+
+  <div class="certs-grid fade-in">
+    <div class="cert-card">
+      <div class="cert-icon">◆</div>
+      <div class="cert-name" data-ar="عضو منتسب SOCPA" data-en="SOCPA Associate Member">عضو منتسب SOCPA</div>
+      <div class="cert-issuer" data-ar="الهيئة السعودية للمراجعين والمحاسبين" data-en="Saudi Organization for Chartered & Professional Accountants">الهيئة السعودية للمراجعين والمحاسبين</div>
+      <div class="cert-meta" data-ar="صدر: مارس ٢٠٢٦ · ينتهي: مارس ٢٠٢٧ · رقم الاعتماد: 170324" data-en="Issued: March 2026 · Expires: March 2027 · ID: 170324">صدر: مارس ٢٠٢٦ · ينتهي: مارس ٢٠٢٧ · رقم الاعتماد: 170324</div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">◆</div>
+      <div class="cert-name" data-ar="تقنيات محاسبية — Accounting Technology" data-en="Accounting Technology">تقنيات محاسبية — Accounting Technology</div>
+      <div class="cert-issuer" data-ar="المؤسسة العامة للتدريب التقني والمهني" data-en="Technical & Vocational Training Corporation">المؤسسة العامة للتدريب التقني والمهني</div>
+      <div class="cert-meta" data-ar="صدر: أغسطس ٢٠٢٥" data-en="Issued: August 2025">صدر: أغسطس ٢٠٢٥</div>
+    </div>
+  </div>
+</section>
+
 <section id="projects">
   <div class="fade-in">
     <p class="section-label" data-ar="أعمالي" data-en="My Work">أعمالي</p>
@@ -852,31 +1013,32 @@ footer .footer-accent { color: var(--accent); }
     <div class="project-card">
       <div class="project-thumb">📊</div>
       <div class="project-info">
-        <div class="project-tag" data-ar="داشبورد" data-en="Dashboard">داشبورد</div>
+        <div class="project-tag" data-ar="داشبورد تحليلي" data-en="Analytics Dashboard">داشبورد تحليلي</div>
         <div class="project-name" data-ar="لوحة مؤشرات واحة المستهلك" data-en="Consumer Oasis KPI Dashboard">لوحة مؤشرات واحة المستهلك</div>
-        <div class="project-desc" data-ar="داشبورد Excel متكامل لخطة التحول الرقمي 2026 مع مؤشرات أداء ورسوم بيانية ديناميكية." data-en="A comprehensive Excel dashboard for the 2026 digital transformation plan with KPI cards and dynamic charts.">داشبورد Excel متكامل لخطة التحول الرقمي 2026 مع مؤشرات أداء ورسوم بيانية ديناميكية.</div>
+        <div class="project-desc" data-ar="داشبورد Excel احترافي لخطة التحول الرقمي 2026، يضم بطاقات مؤشرات أداء وربط ديناميكي للصيغ ورسوم بيانية بتخطيط RTL." data-en="A professional multi-sheet Excel dashboard for the 2026 digital transformation plan, featuring KPI cards, dynamic formula linking, charts, and RTL layout.">داشبورد Excel احترافي لخطة التحول الرقمي 2026، يضم بطاقات مؤشرات أداء وربط ديناميكي للصيغ ورسوم بيانية بتخطيط RTL.</div>
       </div>
     </div>
+
     <div class="project-card">
       <div class="project-thumb">📋</div>
       <div class="project-info">
-        <div class="project-tag" data-ar="إدارة مهام" data-en="Task Management">إدارة مهام</div>
-        <div class="project-name" data-ar="نظام تتبع المهام" data-en="Task Tracking System">نظام تتبع المهام</div>
-        <div class="project-desc" data-ar="ملف Excel منظم لتتبع مهام الفريق مع صيغ ورسوم بيانية لقياس الإنجاز." data-en="A structured Excel workbook for team task tracking with formulas and charts to measure progress.">ملف Excel منظم لتتبع مهام الفريق مع صيغ ورسوم بيانية لقياس الإنجاز.</div>
+        <div class="project-tag" data-ar="نظام تتبع" data-en="Tracking System">نظام تتبع</div>
+        <div class="project-name" data-ar="ملف تتبع مهام الفريق" data-en="Team Task Tracking File">ملف تتبع مهام الفريق</div>
+        <div class="project-desc" data-ar="ملف Excel منظّم لتتبع مهام الفريق بصيغ حسابية ورسوم بيانية لقياس معدل الإنجاز." data-en="A structured Excel tracking file with formulas and charts to measure team task completion rates.">ملف Excel منظّم لتتبع مهام الفريق بصيغ حسابية ورسوم بيانية لقياس معدل الإنجاز.</div>
       </div>
     </div>
+
     <div class="project-card">
       <div class="project-thumb">📄</div>
       <div class="project-info">
-        <div class="project-tag" data-ar="عقود" data-en="Contracts">عقود</div>
-        <div class="project-name" data-ar="عقود ووثائق مشتريات" data-en="Procurement Documents & Contracts">عقود ووثائق مشتريات</div>
-        <div class="project-desc" data-ar="إعداد عقود إيجار ووثائق مشتريات ومراجعة حسابات عقود توريد حكومية متعددة السنوات." data-en="Drafting lease contracts, procurement documents, and auditing multi-year government supply contracts.">إعداد عقود إيجار ووثائق مشتريات ومراجعة حسابات عقود توريد حكومية متعددة السنوات.</div>
+        <div class="project-tag" data-ar="عقود ومشتريات" data-en="Contracts & Procurement">عقود ومشتريات</div>
+        <div class="project-name" data-ar="وثائق مشتريات وعقود توريد" data-en="Procurement Docs & Supply Contracts">وثائق مشتريات وعقود توريد</div>
+        <div class="project-desc" data-ar="إعداد عقود إيجار، استخراج بيانات التوريد من PDF إلى Excel، ومراجعة حسابات عقود توريد حكومية متعددة السنوات." data-en="Drafting lease contracts, extracting supply data from PDF to Excel, and auditing multi-year government supply contracts.">إعداد عقود إيجار، استخراج بيانات التوريد من PDF إلى Excel، ومراجعة حسابات عقود توريد حكومية متعددة السنوات.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BLOG -->
 <section id="blog">
   <div class="fade-in">
     <p class="section-label" data-ar="آخر المقالات" data-en="Latest Posts">آخر المقالات</p>
@@ -885,20 +1047,19 @@ footer .footer-accent { color: var(--accent); }
   <div class="blog-grid fade-in">
     <div class="blog-card">
       <div class="blog-date">2026 / 04</div>
-      <div class="blog-title" data-ar="قريباً — أول تدوينة!" data-en="Coming Soon — First Post!">قريباً — أول تدوينة!</div>
-      <div class="blog-excerpt" data-ar="سأبدأ بمشاركة تجربتي المهنية وأفكاري حول التقنية والأمن السيبراني. ترقبوا المزيد..." data-en="I'll be sharing my professional journey and thoughts on technology and cybersecurity. Stay tuned...">سأبدأ بمشاركة تجربتي المهنية وأفكاري حول التقنية والأمن السيبراني. ترقبوا المزيد...</div>
+      <div class="blog-title" data-ar="قريباً — أول تدوينة" data-en="Coming Soon — First Post">قريباً — أول تدوينة</div>
+      <div class="blog-excerpt" data-ar="سأبدأ قريباً بمشاركة مقالات حول عمليات المشتريات الحكومية، الإدارة المالية، وأدوات الإكسل التي أستخدمها يومياً." data-en="I'll soon start sharing articles on government procurement, financial management, and the Excel tools I use daily.">سأبدأ قريباً بمشاركة مقالات حول عمليات المشتريات الحكومية، الإدارة المالية، وأدوات الإكسل التي أستخدمها يومياً.</div>
       <a href="#" class="blog-read-more" data-ar="اقرأ المزيد →" data-en="Read More →">اقرأ المزيد →</a>
     </div>
     <div class="blog-card">
       <div class="blog-date">—</div>
-      <div class="blog-title" data-ar="هذا المكان لمقالاتك القادمة" data-en="Space for your upcoming articles">هذا المكان لمقالاتك القادمة</div>
-      <div class="blog-excerpt" data-ar="يمكنك إضافة تدوينات جديدة بسهولة بنسخ نفس البنية الموجودة في الكود." data-en="You can easily add new posts by copying the existing card structure in the code.">يمكنك إضافة تدوينات جديدة بسهولة بنسخ نفس البنية الموجودة في الكود.</div>
+      <div class="blog-title" data-ar="هذا المكان لمقالاتك القادمة" data-en="Space for upcoming articles">هذا المكان لمقالاتك القادمة</div>
+      <div class="blog-excerpt" data-ar="يمكنك إضافة تدوينات جديدة بسهولة بنسخ نفس بنية البطاقة الموجودة في الكود." data-en="You can easily add new posts by duplicating the existing card structure in the code.">يمكنك إضافة تدوينات جديدة بسهولة بنسخ نفس بنية البطاقة الموجودة في الكود.</div>
       <a href="#" class="blog-read-more" data-ar="اقرأ المزيد →" data-en="Read More →">اقرأ المزيد →</a>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="fade-in">
     <p class="section-label" data-ar="تواصل معي" data-en="Get in Touch">تواصل معي</p>
@@ -907,19 +1068,23 @@ footer .footer-accent { color: var(--accent); }
   <div class="contact-wrapper fade-in">
     <div class="contact-info">
       <h3 data-ar="أرسل لي رسالة" data-en="Send me a message">أرسل لي رسالة</h3>
-      <p data-ar="أسعد دائماً بالتواصل معك. سواء كان لديك سؤال أو فرصة تعاون أو مجرد سلام، لا تتردد!" data-en="I'm always happy to hear from you. Whether you have a question, a collaboration opportunity, or just want to say hi — don't hesitate!">أسعد دائماً بالتواصل معك. سواء كان لديك سؤال أو فرصة تعاون أو مجرد سلام، لا تتردد!</p>
+      <p data-ar="مفتوح للفرص المهنية، التعاون، أو مجرد حديث عن المحاسبة وعمليات المشتريات الحكومية. لا تتردد بالتواصل." data-en="Open to professional opportunities, collaborations, or just a chat about accounting and government procurement. Feel free to reach out.">مفتوح للفرص المهنية، التعاون، أو مجرد حديث عن المحاسبة وعمليات المشتريات الحكومية. لا تتردد بالتواصل.</p>
       <div class="contact-links">
-        <a href="mailto:your@email.com" class="contact-link">
+        <a href="mailto:ahmad.rimee@gmail.com" class="contact-link">
           <span class="contact-link-icon">✉</span>
-          <span>your@email.com</span>
+          <span>ahmad.rimee@gmail.com</span>
         </a>
-        <a href="https://linkedin.com/in/yourprofile" class="contact-link" target="_blank">
+        <a href="tel:+966502993338" class="contact-link">
+          <span class="contact-link-icon">📞</span>
+          <span dir="ltr">+966 50 299 3338</span>
+        </a>
+        <a href="https://linkedin.com/in/احمد-بن-عبد-الله-بن-علي-2b7014249" class="contact-link" target="_blank" rel="noopener">
           <span class="contact-link-icon">in</span>
           <span>LinkedIn</span>
         </a>
-        <a href="https://twitter.com/yourhandle" class="contact-link" target="_blank">
-          <span class="contact-link-icon">𝕏</span>
-          <span>𝕏 / Twitter</span>
+        <a href="#" class="contact-link">
+          <span class="contact-link-icon">📍</span>
+          <span data-ar="الدمام، المنطقة الشرقية" data-en="Dammam, Eastern Province">الدمام، المنطقة الشرقية</span>
         </a>
       </div>
     </div>
@@ -933,14 +1098,13 @@ footer .footer-accent { color: var(--accent); }
       <div class="form-group">
         <textarea placeholder="رسالتك..." data-ar-ph="رسالتك..." data-en-ph="Your message..."></textarea>
       </div>
-      <button class="form-submit" data-ar="إرسال" data-en="Send">إرسال</button>
+      <button class="form-submit" data-ar="إرسال الرسالة" data-en="Send Message">إرسال الرسالة</button>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <p><span data-ar="صُمم بـ" data-en="Designed with">صُمم بـ</span> <span class="footer-accent">♦</span> <span data-ar="بواسطة أحمد" data-en="by Ahmad">بواسطة أحمد</span> — 2026</p>
+  <p><span data-ar="صُمم بـ" data-en="Designed with">صُمم بـ</span> <span class="footer-accent">◆</span> <span data-ar="بواسطة أحمد عبدالله علي" data-en="by Ahmed Abdullah Ali">بواسطة أحمد عبدالله علي</span> — 2026</p>
 </footer>
 
 <script>
@@ -961,38 +1125,31 @@ function toggleLang() {
     html.setAttribute('lang', 'ar');
   }
 
-  // Update toggle button
   document.querySelector('.lang-toggle').textContent = lang === 'ar' ? 'EN' : 'عربي';
 
-  // Update all translatable elements
   document.querySelectorAll('[data-ar]').forEach(el => {
     el.textContent = el.getAttribute(`data-${lang}`);
   });
 
-  // Update placeholders
   document.querySelectorAll('[data-ar-ph]').forEach(el => {
     el.placeholder = el.getAttribute(`data-${lang}-ph`);
   });
 }
 
-// Nav scroll effect
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Mobile menu
 function toggleMenu() {
   document.getElementById('navLinks').classList.toggle('open');
 }
 
-// Close mobile menu on link click
 document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', () => {
     document.getElementById('navLinks').classList.remove('open');
   });
 });
 
-// Scroll reveal
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
