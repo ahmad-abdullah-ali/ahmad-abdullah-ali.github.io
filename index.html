@@ -8,9 +8,9 @@
 <style>
 :root {
   --bg-primary: #091413;
-  --bg-secondary: #0F1C1A;
-  --bg-card: #152927;
-  --bg-card-hover: #1C3733;
+  --bg-secondary: #0D1C1A;
+  --bg-card: #122421;
+  --bg-card-hover: #1A3230;
   --accent: #408A71;
   --accent-dim: #285A48;
   --accent-light: #B0E4CC;
@@ -18,8 +18,8 @@
   --text-primary: #E8F0EC;
   --text-secondary: #8FA39B;
   --text-muted: #556962;
-  --border: rgba(64, 138, 113, 0.15);
-  --border-strong: rgba(64, 138, 113, 0.32);
+  --border: rgba(40, 90, 72, 0.35);
+  --border-strong: rgba(64, 138, 113, 0.5);
   --font-ar: 'Noto Kufi Arabic', 'Amiri', sans-serif;
   --font-ar-body: 'Amiri', 'Noto Kufi Arabic', serif;
   --font-en: 'DM Serif Display', serif;
@@ -62,7 +62,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(12, 15, 20, 0.85);
+  background: rgba(9, 20, 19, 0.88);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   transition: all 0.4s;
@@ -170,6 +170,7 @@ body.en .nav-links a::after { right: auto; left: 0; }
   margin-bottom: 1rem;
   opacity: 0;
   animation: fadeUp 0.8s 0.4s forwards;
+  color: var(--accent-light);
 }
 
 body.en .hero h1 { font-family: var(--font-en); font-weight: 400; }
@@ -237,7 +238,7 @@ body.en .hero-subtitle { font-family: var(--font-en-body); font-weight: 300; }
   background: var(--accent);
   color: var(--bg-primary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(212, 168, 85, 0.2);
+  box-shadow: 0 8px 30px rgba(64, 138, 113, 0.35);
 }
 
 .scroll-hint {
@@ -327,7 +328,7 @@ body.en .about-text p { font-family: var(--font-en-body); font-weight: 300; line
 .stat-card:hover {
   border-color: var(--border-strong);
   transform: translateY(-3px);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
 .stat-number {
@@ -515,7 +516,7 @@ body.en .cert-card::before { right: auto; left: 0; background: radial-gradient(c
 .cert-card:hover {
   border-color: var(--border-strong);
   transform: translateY(-3px);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
 }
 
 .cert-icon {
@@ -561,7 +562,7 @@ body.en .cert-card::before { right: auto; left: 0; background: radial-gradient(c
 .project-card:hover {
   border-color: var(--accent);
   transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
 .project-thumb {
@@ -686,7 +687,7 @@ body.en .blog-excerpt { font-family: var(--font-en-body); font-weight: 300; }
 .contact-simple .contact-link:hover {
   border-color: var(--accent);
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
 .contact-links {
@@ -773,7 +774,7 @@ footer .footer-accent { color: var(--accent); }
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(12, 15, 20, 0.95);
+    background: rgba(9, 20, 19, 0.95);
     backdrop-filter: blur(20px);
     padding: 1.5rem 2rem;
     gap: 1.2rem;
@@ -844,7 +845,7 @@ footer .footer-accent { color: var(--accent); }
         <div class="stat-label" data-ar="المعدل التراكمي" data-en="GPA">المعدل التراكمي</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">+٣</div>
+        <div class="stat-number">+3</div>
         <div class="stat-label" data-ar="سنوات خبرة عملية" data-en="Years of Experience">سنوات خبرة عملية</div>
       </div>
       <div class="stat-card">
@@ -867,7 +868,7 @@ footer .footer-accent { color: var(--accent); }
   <div class="timeline fade-in">
 
     <div class="timeline-item">
-      <div class="timeline-date" data-ar="يناير ٢٠٢٦ — حتى الآن" data-en="January 2026 — Present">يناير ٢٠٢٦ — حتى الآن</div>
+      <div class="timeline-date" data-ar="يناير 2026 — حتى الآن" data-en="January 2026 — Present">يناير 2026 — حتى الآن</div>
       <div class="timeline-role" data-ar="مسؤول التنسيق الإداري والمالي" data-en="Admin & Finance Coordination Officer">مسؤول التنسيق الإداري والمالي</div>
       <div class="timeline-company" data-ar="واحة المستهلك — تابعة لأجكوم القابضة · الدمام · دوام مختلط" data-en="Consumer Oasis — subsidiary of AJCOM Holding · Dammam · Hybrid">واحة المستهلك — تابعة لأجكوم القابضة · الدمام · دوام مختلط</div>
       <div class="timeline-desc" data-ar="حلقة الوصل الأساسية لضمان سير العمليات المالية والإدارية بدقة: متابعة المنافسات الحكومية عبر اعتماد وتنافس ومواسم، إدارة خزينة الشركة والحساب البنكي والعهد المالية، تسجيل الموردين والعملاء في منصة شمول، وتنسيق مبادرات المسؤولية الاجتماعية مع الجمعيات الخيرية." data-en="Primary coordination point ensuring smooth financial and administrative operations: tracking government tenders on Etimad, Tanafus, and Mawasim platforms, managing corporate treasury, bank accounts, and petty cash, registering suppliers and clients on Shumool platform, and coordinating CSR initiatives with charitable organizations.">حلقة الوصل الأساسية لضمان سير العمليات المالية والإدارية بدقة: متابعة المنافسات الحكومية عبر اعتماد وتنافس ومواسم، إدارة خزينة الشركة والحساب البنكي والعهد المالية، تسجيل الموردين والعملاء في منصة شمول، وتنسيق مبادرات المسؤولية الاجتماعية مع الجمعيات الخيرية.</div>
@@ -881,9 +882,9 @@ footer .footer-accent { color: var(--accent); }
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-date" data-ar="ديسمبر ٢٠٢٢ — يناير ٢٠٢٦" data-en="December 2022 — January 2026">ديسمبر ٢٠٢٢ — يناير ٢٠٢٦</div>
+      <div class="timeline-date" data-ar="ديسمبر 2022 — يناير 2026" data-en="December 2022 — January 2026">ديسمبر 2022 — يناير 2026</div>
       <div class="timeline-role" data-ar="كاشير" data-en="Cashier">كاشير</div>
-      <div class="timeline-company" data-ar="واحة المستهلك · الدمام · ٣ سنوات و شهر واحد" data-en="Consumer Oasis · Dammam · 3 years 1 month">واحة المستهلك · الدمام · ٣ سنوات و شهر واحد</div>
+      <div class="timeline-company" data-ar="واحة المستهلك · الدمام · 3 سنوات و شهر واحد" data-en="Consumer Oasis · Dammam · 3 years 1 month">واحة المستهلك · الدمام · 3 سنوات و شهر واحد</div>
       <div class="timeline-desc" data-ar="اكتسبت خبرة متعددة في خدمة العملاء، فهم سوق العمل ورغبات المستهلك، والإلمام بالقطاع الغذائي من الجملة إلى التجزئة، إضافة إلى الجرد والإشراف على الفرع. هذه الخبرة التشغيلية شكّلت أساساً قوياً انتقلت من خلاله إلى منصبي الحالي داخل نفس الشركة." data-en="Gained diverse experience in customer service, market understanding, consumer behavior, and knowledge of the food sector from wholesale to retail, along with inventory management and branch supervision. This operational experience built a strong foundation that led to my current role within the same company.">اكتسبت خبرة متعددة في خدمة العملاء، فهم سوق العمل ورغبات المستهلك، والإلمام بالقطاع الغذائي من الجملة إلى التجزئة، إضافة إلى الجرد والإشراف على الفرع. هذه الخبرة التشغيلية شكّلت أساساً قوياً انتقلت من خلاله إلى منصبي الحالي داخل نفس الشركة.</div>
     </div>
 
@@ -944,14 +945,14 @@ footer .footer-accent { color: var(--accent); }
       <div class="cert-icon">◆</div>
       <div class="cert-name" data-ar="عضو منتسب SOCPA" data-en="SOCPA Associate Member">عضو منتسب SOCPA</div>
       <div class="cert-issuer" data-ar="الهيئة السعودية للمراجعين والمحاسبين" data-en="Saudi Organization for Chartered & Professional Accountants">الهيئة السعودية للمراجعين والمحاسبين</div>
-      <div class="cert-meta" data-ar="صدر: مارس ٢٠٢٦ · ينتهي: مارس ٢٠٢٧ · رقم الاعتماد: 170324" data-en="Issued: March 2026 · Expires: March 2027 · ID: 170324">صدر: مارس ٢٠٢٦ · ينتهي: مارس ٢٠٢٧ · رقم الاعتماد: 170324</div>
+      <div class="cert-meta" data-ar="صدر: مارس 2026 · ينتهي: مارس 2027 · رقم الاعتماد: 170324" data-en="Issued: March 2026 · Expires: March 2027 · ID: 170324">صدر: مارس 2026 · ينتهي: مارس 2027 · رقم الاعتماد: 170324</div>
     </div>
 
     <div class="cert-card">
       <div class="cert-icon">◆</div>
       <div class="cert-name" data-ar="تقنيات محاسبية — Accounting Technology" data-en="Accounting Technology">تقنيات محاسبية — Accounting Technology</div>
       <div class="cert-issuer" data-ar="المؤسسة العامة للتدريب التقني والمهني — الكلية التقنية بالدمام" data-en="Technical & Vocational Training Corporation — Technical College Dammam">المؤسسة العامة للتدريب التقني والمهني — الكلية التقنية بالدمام</div>
-      <div class="cert-meta" data-ar="صدر: أغسطس ٢٠٢٥ · المعدل: 3.97 من 5.00" data-en="Issued: August 2025 · GPA: 3.97/5.00">صدر: أغسطس ٢٠٢٥ · المعدل: 3.97 من 5.00</div>
+      <div class="cert-meta" data-ar="صدر: أغسطس 2025 · المعدل: 3.97 من 5.00" data-en="Issued: August 2025 · GPA: 3.97/5.00">صدر: أغسطس 2025 · المعدل: 3.97 من 5.00</div>
     </div>
   </div>
 </section>
