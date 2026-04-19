@@ -7,18 +7,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Kufi+Arabic:wght@300;400;600;700;800&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg-primary: #0C0F14;
-  --bg-secondary: #141820;
-  --bg-card: #1A1F2B;
-  --bg-card-hover: #222838;
-  --accent: #D4A855;
-  --accent-dim: #B8922E;
-  --accent-glow: rgba(212, 168, 85, 0.15);
-  --text-primary: #E8E4DC;
-  --text-secondary: #9A9488;
-  --text-muted: #5E5A52;
-  --border: rgba(212, 168, 85, 0.12);
-  --border-strong: rgba(212, 168, 85, 0.25);
+  --bg-primary: #091413;
+  --bg-secondary: #0F1C1A;
+  --bg-card: #152927;
+  --bg-card-hover: #1C3733;
+  --accent: #408A71;
+  --accent-dim: #285A48;
+  --accent-light: #B0E4CC;
+  --accent-glow: rgba(64, 138, 113, 0.18);
+  --text-primary: #E8F0EC;
+  --text-secondary: #8FA39B;
+  --text-muted: #556962;
+  --border: rgba(64, 138, 113, 0.15);
+  --border-strong: rgba(64, 138, 113, 0.32);
   --font-ar: 'Noto Kufi Arabic', 'Amiri', sans-serif;
   --font-ar-body: 'Amiri', 'Noto Kufi Arabic', serif;
   --font-en: 'DM Serif Display', serif;
@@ -47,7 +48,7 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 9999;
 }
@@ -175,7 +176,7 @@ body.en .hero h1 { font-family: var(--font-en); font-weight: 400; }
 
 .hero h1 span.highlight {
   display: block;
-  background: linear-gradient(135deg, var(--accent), #F0D48A);
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: clamp(1.1rem, 2.5vw, 1.8rem);
