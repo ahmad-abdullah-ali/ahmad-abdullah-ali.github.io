@@ -70,11 +70,12 @@ nav {
 nav.scrolled { padding: 0.6rem 2rem; }
 
 .nav-logo {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--accent);
   letter-spacing: 0.02em;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .nav-links {
@@ -662,25 +663,30 @@ body.en .blog-excerpt { font-family: var(--font-en-body); font-weight: 300; }
 
 .blog-read-more:hover { border-color: var(--accent); }
 
-.contact-wrapper {
+.contact-simple {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.contact-simple .contact-links {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 1rem;
 }
 
-.contact-info h3 {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
+.contact-simple .contact-link {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.2rem;
+  border-radius: 10px;
+  transition: all 0.3s;
 }
 
-.contact-info p {
-  color: var(--text-secondary);
-  font-family: var(--font-ar-body);
-  margin-bottom: 2rem;
-  line-height: 2;
+.contact-simple .contact-link:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
-
-body.en .contact-info p { font-family: var(--font-en-body); font-weight: 300; }
 
 .contact-links {
   display: flex;
@@ -715,56 +721,6 @@ body.en .contact-info p { font-family: var(--font-en-body); font-weight: 300; }
 .contact-link:hover .contact-link-icon {
   border-color: var(--accent);
   background: var(--accent-glow);
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 0.9rem 1.2rem;
-  color: var(--text-primary);
-  font-family: var(--font-ar);
-  font-size: 0.9rem;
-  transition: border-color 0.3s;
-  outline: none;
-}
-
-body.en .form-group input,
-body.en .form-group textarea { font-family: var(--font-en-body); }
-
-.form-group input:focus,
-.form-group textarea:focus { border-color: var(--accent); }
-
-.form-group textarea { resize: vertical; min-height: 120px; }
-
-.form-submit {
-  padding: 0.9rem 2rem;
-  background: var(--accent);
-  color: var(--bg-primary);
-  border: none;
-  border-radius: 6px;
-  font-family: var(--font-ar);
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  align-self: flex-start;
-}
-
-body.en .form-submit { font-family: var(--font-en-body); }
-
-.form-submit:hover {
-  background: var(--accent-dim);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(212, 168, 85, 0.25);
 }
 
 footer {
@@ -823,7 +779,8 @@ footer .footer-accent { color: var(--accent); }
     border-bottom: 1px solid var(--border);
   }
   .mobile-menu-btn { display: block; }
-  .about-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-simple .contact-links { grid-template-columns: 1fr; }
   .projects-grid, .blog-grid, .certs-grid { grid-template-columns: 1fr; }
   section { padding: 4rem 1.5rem; }
   .timeline { padding-right: 2rem; }
@@ -836,7 +793,7 @@ footer .footer-accent { color: var(--accent); }
 <body>
 
 <nav id="navbar">
-  <a href="#hero" class="nav-logo" data-ar="أحمد علي" data-en="Ahmed Ali">أحمد علي</a>
+  <a href="#hero" class="nav-logo" data-ar="أحمد عبدالله علي" data-en="Ahmed Abdullah Ali">أحمد عبدالله علي</a>
   <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about" data-ar="نبذة" data-en="About">نبذة</a></li>
@@ -855,13 +812,13 @@ footer .footer-accent { color: var(--accent); }
     <p class="hero-greeting" data-ar="أهلاً بك" data-en="Welcome">أهلاً بك</p>
     <h1>
       <span data-ar="أحمد عبدالله علي" data-en="Ahmed Abdullah Ali">أحمد عبدالله علي</span>
-      <span class="highlight" data-ar="منسق مالي وإداري" data-en="Financial & Administrative Coordinator">منسق مالي وإداري</span>
+      <span class="highlight" data-ar="مسؤول التنسيق الإداري والمالي" data-en="Admin & Finance Coordination Officer">مسؤول التنسيق الإداري والمالي</span>
     </h1>
     <div class="hero-badges">
       <span class="hero-badge" data-ar="عضو منتسب في SOCPA" data-en="SOCPA Associate Member">عضو منتسب في SOCPA</span>
-      <span class="hero-badge" data-ar="أخصائي اعتماد وتنافس" data-en="Etimad & Tanafus Specialist">أخصائي اعتماد وتنافس</span>
+      <span class="hero-badge" data-ar="أخصائي منصات المنافسات الحكومية" data-en="Government Tenders Specialist">أخصائي منصات المنافسات الحكومية</span>
     </div>
-    <p class="hero-subtitle" data-ar="مدونة شخصية لمشاركة رحلتي المهنية في المحاسبة، الإدارة المالية، وعمليات المشتريات الحكومية." data-en="A personal blog sharing my journey in accounting, financial management, and government procurement operations.">مدونة شخصية لمشاركة رحلتي المهنية في المحاسبة، الإدارة المالية، وعمليات المشتريات الحكومية.</p>
+    <p class="hero-subtitle" data-ar="محاسب وشغوف بالتفاصيل المالية. أكتب هنا عن تجاربي المهنية، أدوات أستخدمها يومياً، ومواضيع تستحق المشاركة." data-en="An accountant passionate about financial details. Here I write about my professional experiences, tools I use daily, and topics worth sharing.">محاسب وشغوف بالتفاصيل المالية. أكتب هنا عن تجاربي المهنية، أدوات أستخدمها يومياً، ومواضيع تستحق المشاركة.</p>
     <a href="#about" class="hero-cta" data-ar="تعرّف عليّ ↓" data-en="Learn More ↓">تعرّف عليّ ↓</a>
   </div>
   <div class="scroll-hint">
@@ -876,8 +833,8 @@ footer .footer-accent { color: var(--accent); }
   </div>
   <div class="about-grid">
     <div class="about-text fade-in">
-      <p data-ar="أحمد عبدالله علي، عضو منتسب في الهيئة السعودية للمراجعين والمحاسبين (SOCPA)، خريج تخصص المحاسبة من الكلية التقنية بالدمام بمعدل 3.97، وأشغل حالياً منصب مدير التنسيق المالي والإداري في شركة أجكوم القابضة." data-en="Ahmed Abdullah Ali — Associate Member of the Saudi Organization for Chartered and Professional Accountants (SOCPA), Accounting graduate from the Technical College in Dammam with a 3.97 GPA, currently serving as Financial and Administrative Coordination Manager at AJCOM Holding.">أحمد عبدالله علي، عضو منتسب في الهيئة السعودية للمراجعين والمحاسبين (SOCPA)، خريج تخصص المحاسبة من الكلية التقنية بالدمام بمعدل 3.97، وأشغل حالياً منصب مدير التنسيق المالي والإداري في شركة أجكوم القابضة.</p>
-      <p data-ar="تتمحور مسؤولياتي حول إدارة العمليات المالية والإدارية بدقة، بدءاً من متابعة المنافسات الحكومية عبر منصتي اعتماد وتنافس، مروراً بإدارة خزينة الشركة والعهد المالية، ووصولاً إلى تنسيق مبادرات المسؤولية الاجتماعية مع الجمعيات الخيرية." data-en="My responsibilities focus on managing financial and administrative operations with precision — from tracking government tenders via Etimad and Tanafus platforms, to managing corporate treasury and petty cash, to coordinating CSR initiatives with charitable organizations.">تتمحور مسؤولياتي حول إدارة العمليات المالية والإدارية بدقة، بدءاً من متابعة المنافسات الحكومية عبر منصتي اعتماد وتنافس، مروراً بإدارة خزينة الشركة والعهد المالية، ووصولاً إلى تنسيق مبادرات المسؤولية الاجتماعية مع الجمعيات الخيرية.</p>
+      <p data-ar="أحمد عبدالله علي، عضو منتسب في الهيئة السعودية للمراجعين والمحاسبين (SOCPA)، خريج تخصص المحاسبة من الكلية التقنية بالدمام بمعدل 3.97، وأشغل حالياً منصب مسؤول التنسيق الإداري والمالي في شركة واحة المستهلك التابعة لأجكوم القابضة." data-en="Ahmed Abdullah Ali — Associate Member of the Saudi Organization for Chartered and Professional Accountants (SOCPA), Accounting graduate from the Technical College in Dammam with a 3.97 GPA, currently serving as Admin & Finance Coordination Officer at Consumer Oasis, a subsidiary of AJCOM Holding.">أحمد عبدالله علي، عضو منتسب في الهيئة السعودية للمراجعين والمحاسبين (SOCPA)، خريج تخصص المحاسبة من الكلية التقنية بالدمام بمعدل 3.97، وأشغل حالياً منصب مسؤول التنسيق الإداري والمالي في شركة واحة المستهلك التابعة لأجكوم القابضة.</p>
+      <p data-ar="تتمحور مسؤولياتي حول إدارة العمليات المالية والإدارية بدقة، بدءاً من متابعة المنافسات الحكومية عبر منصات اعتماد وتنافس ومواسم، مروراً بإدارة خزينة الشركة والعهد المالية، ووصولاً إلى تنسيق مبادرات المسؤولية الاجتماعية مع الجمعيات الخيرية." data-en="My responsibilities focus on managing financial and administrative operations with precision — from tracking government tenders via Etimad, Tanafus, and Mawasim platforms, to managing corporate treasury and petty cash, to coordinating CSR initiatives with charitable organizations.">تتمحور مسؤولياتي حول إدارة العمليات المالية والإدارية بدقة، بدءاً من متابعة المنافسات الحكومية عبر منصات اعتماد وتنافس ومواسم، مروراً بإدارة خزينة الشركة والعهد المالية، ووصولاً إلى تنسيق مبادرات المسؤولية الاجتماعية مع الجمعيات الخيرية.</p>
       <p data-ar="هدفي الحفاظ على استقرار النظام المالي ودعم كفاءة الإدارة، مع الالتزام الدائم بالأمانة المهنية." data-en="My goal is to maintain financial system stability and support administrative efficiency, always committed to professional integrity.">هدفي الحفاظ على استقرار النظام المالي ودعم كفاءة الإدارة، مع الالتزام الدائم بالأمانة المهنية.</p>
     </div>
     <div class="about-stats fade-in">
@@ -886,8 +843,8 @@ footer .footer-accent { color: var(--accent); }
         <div class="stat-label" data-ar="المعدل التراكمي" data-en="GPA">المعدل التراكمي</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number" data-ar="+٣ سنوات" data-en="3+ Years">+٣ سنوات</div>
-        <div class="stat-label" data-ar="خبرة عملية" data-en="Experience">خبرة عملية</div>
+        <div class="stat-number">+٣</div>
+        <div class="stat-label" data-ar="سنوات خبرة عملية" data-en="Years of Experience">سنوات خبرة عملية</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">SOCPA</div>
@@ -910,12 +867,13 @@ footer .footer-accent { color: var(--accent); }
 
     <div class="timeline-item">
       <div class="timeline-date" data-ar="يناير ٢٠٢٦ — حتى الآن" data-en="January 2026 — Present">يناير ٢٠٢٦ — حتى الآن</div>
-      <div class="timeline-role" data-ar="مدير التنسيق المالي والإداري" data-en="Financial & Administrative Coordination Manager">مدير التنسيق المالي والإداري</div>
-      <div class="timeline-company" data-ar="أجكوم القابضة · الدمام · دوام مختلط" data-en="AJCOM Holding · Dammam · Hybrid">أجكوم القابضة · الدمام · دوام مختلط</div>
-      <div class="timeline-desc" data-ar="حلقة الوصل الأساسية لضمان سير العمليات المالية والإدارية بدقة: متابعة المنافسات الحكومية عبر اعتماد وتنافس، إدارة خزينة الشركة والحساب البنكي والعهد المالية، تسجيل الموردين والعملاء في منصة شمول، وتنسيق مبادرات المسؤولية الاجتماعية مع الجمعيات الخيرية." data-en="Primary coordination point ensuring smooth financial and administrative operations: tracking government tenders on Etimad and Tanafus, managing corporate treasury, bank accounts, and petty cash, registering suppliers and clients on Shumool platform, and coordinating CSR initiatives with charitable organizations.">حلقة الوصل الأساسية لضمان سير العمليات المالية والإدارية بدقة: متابعة المنافسات الحكومية عبر اعتماد وتنافس، إدارة خزينة الشركة والحساب البنكي والعهد المالية، تسجيل الموردين والعملاء في منصة شمول، وتنسيق مبادرات المسؤولية الاجتماعية مع الجمعيات الخيرية.</div>
+      <div class="timeline-role" data-ar="مسؤول التنسيق الإداري والمالي" data-en="Admin & Finance Coordination Officer">مسؤول التنسيق الإداري والمالي</div>
+      <div class="timeline-company" data-ar="واحة المستهلك — تابعة لأجكوم القابضة · الدمام · دوام مختلط" data-en="Consumer Oasis — subsidiary of AJCOM Holding · Dammam · Hybrid">واحة المستهلك — تابعة لأجكوم القابضة · الدمام · دوام مختلط</div>
+      <div class="timeline-desc" data-ar="حلقة الوصل الأساسية لضمان سير العمليات المالية والإدارية بدقة: متابعة المنافسات الحكومية عبر اعتماد وتنافس ومواسم، إدارة خزينة الشركة والحساب البنكي والعهد المالية، تسجيل الموردين والعملاء في منصة شمول، وتنسيق مبادرات المسؤولية الاجتماعية مع الجمعيات الخيرية." data-en="Primary coordination point ensuring smooth financial and administrative operations: tracking government tenders on Etimad, Tanafus, and Mawasim platforms, managing corporate treasury, bank accounts, and petty cash, registering suppliers and clients on Shumool platform, and coordinating CSR initiatives with charitable organizations.">حلقة الوصل الأساسية لضمان سير العمليات المالية والإدارية بدقة: متابعة المنافسات الحكومية عبر اعتماد وتنافس ومواسم، إدارة خزينة الشركة والحساب البنكي والعهد المالية، تسجيل الموردين والعملاء في منصة شمول، وتنسيق مبادرات المسؤولية الاجتماعية مع الجمعيات الخيرية.</div>
       <div class="timeline-tags">
         <span class="timeline-tag" data-ar="اعتماد" data-en="Etimad">اعتماد</span>
         <span class="timeline-tag" data-ar="تنافس" data-en="Tanafus">تنافس</span>
+        <span class="timeline-tag" data-ar="مواسم" data-en="Mawasim">مواسم</span>
         <span class="timeline-tag" data-ar="شمول" data-en="Shumool">شمول</span>
         <span class="timeline-tag" data-ar="CSR" data-en="CSR">CSR</span>
       </div>
@@ -924,15 +882,8 @@ footer .footer-accent { color: var(--accent); }
     <div class="timeline-item">
       <div class="timeline-date" data-ar="ديسمبر ٢٠٢٢ — يناير ٢٠٢٦" data-en="December 2022 — January 2026">ديسمبر ٢٠٢٢ — يناير ٢٠٢٦</div>
       <div class="timeline-role" data-ar="كاشير" data-en="Cashier">كاشير</div>
-      <div class="timeline-company" data-ar="٣ سنوات و ٢ أشهر" data-en="3 years 2 months">٣ سنوات و ٢ أشهر</div>
-      <div class="timeline-desc" data-ar="اكتسبت خبرة متعددة في خدمة العملاء، فهم سوق العمل ورغبات المستهلك، والإلمام بالقطاع الغذائي من الجملة إلى التجزئة، إضافة إلى الجرد والإشراف على الفرع." data-en="Gained diverse experience in customer service, market understanding, consumer behavior, and comprehensive knowledge of the food sector from wholesale to retail, in addition to inventory management and branch supervision.">اكتسبت خبرة متعددة في خدمة العملاء، فهم سوق العمل ورغبات المستهلك، والإلمام بالقطاع الغذائي من الجملة إلى التجزئة، إضافة إلى الجرد والإشراف على الفرع.</div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-date" data-ar="ديسمبر ٢٠٢٣ — سبتمبر ٢٠٢٥" data-en="December 2023 — September 2025">ديسمبر ٢٠٢٣ — سبتمبر ٢٠٢٥</div>
-      <div class="timeline-role" data-ar="دبلوم محاسبة — Accounting" data-en="Accounting Diploma">دبلوم محاسبة — Accounting</div>
-      <div class="timeline-company" data-ar="المؤسسة العامة للتدريب التقني والمهني — الدمام" data-en="Technical & Vocational Training Corp. — Dammam">المؤسسة العامة للتدريب التقني والمهني — الدمام</div>
-      <div class="timeline-desc" data-ar="تخرجت بمعدل تراكمي 3.97 من 4.00 مع تأسيس قوي في المحاسبة المالية، الإكسل، وحل المشكلات." data-en="Graduated with a 3.97/4.00 GPA with a strong foundation in financial accounting, Excel, and problem solving.">تخرجت بمعدل تراكمي 3.97 من 4.00 مع تأسيس قوي في المحاسبة المالية، الإكسل، وحل المشكلات.</div>
+      <div class="timeline-company" data-ar="واحة المستهلك · الدمام · ٣ سنوات و شهر واحد" data-en="Consumer Oasis · Dammam · 3 years 1 month">واحة المستهلك · الدمام · ٣ سنوات و شهر واحد</div>
+      <div class="timeline-desc" data-ar="اكتسبت خبرة متعددة في خدمة العملاء، فهم سوق العمل ورغبات المستهلك، والإلمام بالقطاع الغذائي من الجملة إلى التجزئة، إضافة إلى الجرد والإشراف على الفرع. هذه الخبرة التشغيلية شكّلت أساساً قوياً انتقلت من خلاله إلى منصبي الحالي داخل نفس الشركة." data-en="Gained diverse experience in customer service, market understanding, consumer behavior, and knowledge of the food sector from wholesale to retail, along with inventory management and branch supervision. This operational experience built a strong foundation that led to my current role within the same company.">اكتسبت خبرة متعددة في خدمة العملاء، فهم سوق العمل ورغبات المستهلك، والإلمام بالقطاع الغذائي من الجملة إلى التجزئة، إضافة إلى الجرد والإشراف على الفرع. هذه الخبرة التشغيلية شكّلت أساساً قوياً انتقلت من خلاله إلى منصبي الحالي داخل نفس الشركة.</div>
     </div>
 
   </div>
@@ -952,7 +903,7 @@ footer .footer-accent { color: var(--accent); }
         <div class="skill-tag"><span class="skill-dot"></span><span data-ar="المحاسبة المالية" data-en="Financial Accounting">المحاسبة المالية</span></div>
         <div class="skill-tag"><span class="skill-dot"></span><span data-ar="الذمم الدائنة والمدينة" data-en="Accounts Payable & Receivable">الذمم الدائنة والمدينة</span></div>
         <div class="skill-tag"><span class="skill-dot"></span><span data-ar="إدارة الخزينة والنقد" data-en="Treasury & Cash Management">إدارة الخزينة والنقد</span></div>
-        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="برامج ERP المحاسبية" data-en="ERP & Accounting Software">برامج ERP المحاسبية</span></div>
+        <div class="skill-tag"><span class="skill-dot"></span><span data-ar="برنامج SAP" data-en="SAP Software">برنامج SAP</span></div>
       </div>
     </div>
 
@@ -998,8 +949,8 @@ footer .footer-accent { color: var(--accent); }
     <div class="cert-card">
       <div class="cert-icon">◆</div>
       <div class="cert-name" data-ar="تقنيات محاسبية — Accounting Technology" data-en="Accounting Technology">تقنيات محاسبية — Accounting Technology</div>
-      <div class="cert-issuer" data-ar="المؤسسة العامة للتدريب التقني والمهني" data-en="Technical & Vocational Training Corporation">المؤسسة العامة للتدريب التقني والمهني</div>
-      <div class="cert-meta" data-ar="صدر: أغسطس ٢٠٢٥" data-en="Issued: August 2025">صدر: أغسطس ٢٠٢٥</div>
+      <div class="cert-issuer" data-ar="المؤسسة العامة للتدريب التقني والمهني — الكلية التقنية بالدمام" data-en="Technical & Vocational Training Corporation — Technical College Dammam">المؤسسة العامة للتدريب التقني والمهني — الكلية التقنية بالدمام</div>
+      <div class="cert-meta" data-ar="صدر: أغسطس ٢٠٢٥ · المعدل: 3.97 من 5.00" data-en="Issued: August 2025 · GPA: 3.97/5.00">صدر: أغسطس ٢٠٢٥ · المعدل: 3.97 من 5.00</div>
     </div>
   </div>
 </section>
@@ -1016,15 +967,6 @@ footer .footer-accent { color: var(--accent); }
         <div class="project-tag" data-ar="داشبورد تحليلي" data-en="Analytics Dashboard">داشبورد تحليلي</div>
         <div class="project-name" data-ar="لوحة مؤشرات واحة المستهلك" data-en="Consumer Oasis KPI Dashboard">لوحة مؤشرات واحة المستهلك</div>
         <div class="project-desc" data-ar="داشبورد Excel احترافي لخطة التحول الرقمي 2026، يضم بطاقات مؤشرات أداء وربط ديناميكي للصيغ ورسوم بيانية بتخطيط RTL." data-en="A professional multi-sheet Excel dashboard for the 2026 digital transformation plan, featuring KPI cards, dynamic formula linking, charts, and RTL layout.">داشبورد Excel احترافي لخطة التحول الرقمي 2026، يضم بطاقات مؤشرات أداء وربط ديناميكي للصيغ ورسوم بيانية بتخطيط RTL.</div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-thumb">📋</div>
-      <div class="project-info">
-        <div class="project-tag" data-ar="نظام تتبع" data-en="Tracking System">نظام تتبع</div>
-        <div class="project-name" data-ar="ملف تتبع مهام الفريق" data-en="Team Task Tracking File">ملف تتبع مهام الفريق</div>
-        <div class="project-desc" data-ar="ملف Excel منظّم لتتبع مهام الفريق بصيغ حسابية ورسوم بيانية لقياس معدل الإنجاز." data-en="A structured Excel tracking file with formulas and charts to measure team task completion rates.">ملف Excel منظّم لتتبع مهام الفريق بصيغ حسابية ورسوم بيانية لقياس معدل الإنجاز.</div>
       </div>
     </div>
 
@@ -1049,13 +991,7 @@ footer .footer-accent { color: var(--accent); }
       <div class="blog-date">2026 / 04</div>
       <div class="blog-title" data-ar="قريباً — أول تدوينة" data-en="Coming Soon — First Post">قريباً — أول تدوينة</div>
       <div class="blog-excerpt" data-ar="سأبدأ قريباً بمشاركة مقالات حول عمليات المشتريات الحكومية، الإدارة المالية، وأدوات الإكسل التي أستخدمها يومياً." data-en="I'll soon start sharing articles on government procurement, financial management, and the Excel tools I use daily.">سأبدأ قريباً بمشاركة مقالات حول عمليات المشتريات الحكومية، الإدارة المالية، وأدوات الإكسل التي أستخدمها يومياً.</div>
-      <a href="#" class="blog-read-more" data-ar="اقرأ المزيد →" data-en="Read More →">اقرأ المزيد →</a>
-    </div>
-    <div class="blog-card">
-      <div class="blog-date">—</div>
-      <div class="blog-title" data-ar="هذا المكان لمقالاتك القادمة" data-en="Space for upcoming articles">هذا المكان لمقالاتك القادمة</div>
-      <div class="blog-excerpt" data-ar="يمكنك إضافة تدوينات جديدة بسهولة بنسخ نفس بنية البطاقة الموجودة في الكود." data-en="You can easily add new posts by duplicating the existing card structure in the code.">يمكنك إضافة تدوينات جديدة بسهولة بنسخ نفس بنية البطاقة الموجودة في الكود.</div>
-      <a href="#" class="blog-read-more" data-ar="اقرأ المزيد →" data-en="Read More →">اقرأ المزيد →</a>
+      <a href="#" class="blog-read-more" data-ar="ابقَ على تواصل →" data-en="Stay Tuned →">ابقَ على تواصل →</a>
     </div>
   </div>
 </section>
@@ -1065,40 +1001,24 @@ footer .footer-accent { color: var(--accent); }
     <p class="section-label" data-ar="تواصل معي" data-en="Get in Touch">تواصل معي</p>
     <h2 class="section-title" data-ar="طريقة التواصل" data-en="Contact">طريقة التواصل</h2>
   </div>
-  <div class="contact-wrapper fade-in">
-    <div class="contact-info">
-      <h3 data-ar="أرسل لي رسالة" data-en="Send me a message">أرسل لي رسالة</h3>
-      <p data-ar="مفتوح للفرص المهنية، التعاون، أو مجرد حديث عن المحاسبة وعمليات المشتريات الحكومية. لا تتردد بالتواصل." data-en="Open to professional opportunities, collaborations, or just a chat about accounting and government procurement. Feel free to reach out.">مفتوح للفرص المهنية، التعاون، أو مجرد حديث عن المحاسبة وعمليات المشتريات الحكومية. لا تتردد بالتواصل.</p>
-      <div class="contact-links">
-        <a href="mailto:ahmad.rimee@gmail.com" class="contact-link">
-          <span class="contact-link-icon">✉</span>
-          <span>ahmad.rimee@gmail.com</span>
-        </a>
-        <a href="tel:+966502993338" class="contact-link">
-          <span class="contact-link-icon">📞</span>
-          <span dir="ltr">+966 50 299 3338</span>
-        </a>
-        <a href="https://linkedin.com/in/احمد-بن-عبد-الله-بن-علي-2b7014249" class="contact-link" target="_blank" rel="noopener">
-          <span class="contact-link-icon">in</span>
-          <span>LinkedIn</span>
-        </a>
-        <a href="#" class="contact-link">
-          <span class="contact-link-icon">📍</span>
-          <span data-ar="الدمام، المنطقة الشرقية" data-en="Dammam, Eastern Province">الدمام، المنطقة الشرقية</span>
-        </a>
-      </div>
-    </div>
-    <div class="contact-form">
-      <div class="form-group">
-        <input type="text" placeholder="الاسم" data-ar-ph="الاسم" data-en-ph="Name">
-      </div>
-      <div class="form-group">
-        <input type="email" placeholder="البريد الإلكتروني" data-ar-ph="البريد الإلكتروني" data-en-ph="Email">
-      </div>
-      <div class="form-group">
-        <textarea placeholder="رسالتك..." data-ar-ph="رسالتك..." data-en-ph="Your message..."></textarea>
-      </div>
-      <button class="form-submit" data-ar="إرسال الرسالة" data-en="Send Message">إرسال الرسالة</button>
+  <div class="contact-simple fade-in">
+    <div class="contact-links">
+      <a href="mailto:ahmad.rimee@gmail.com" class="contact-link">
+        <span class="contact-link-icon">✉</span>
+        <span>ahmad.rimee@gmail.com</span>
+      </a>
+      <a href="tel:+966502993338" class="contact-link">
+        <span class="contact-link-icon">📞</span>
+        <span dir="ltr">+966 50 299 3338</span>
+      </a>
+      <a href="https://linkedin.com/in/احمد-بن-عبد-الله-بن-علي-2b7014249" class="contact-link" target="_blank" rel="noopener">
+        <span class="contact-link-icon">in</span>
+        <span>LinkedIn</span>
+      </a>
+      <a href="https://www.google.com/maps/place/Dammam" class="contact-link" target="_blank" rel="noopener">
+        <span class="contact-link-icon">📍</span>
+        <span data-ar="الدمام، المنطقة الشرقية" data-en="Dammam, Eastern Province">الدمام، المنطقة الشرقية</span>
+      </a>
     </div>
   </div>
 </section>
