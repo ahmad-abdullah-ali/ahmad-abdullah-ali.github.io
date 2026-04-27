@@ -218,6 +218,15 @@ body.en .hero-subtitle { font-family: var(--font-en-body); font-weight: 300; }
   letter-spacing: 0.05em;
 }
 
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.8s forwards;
+}
+
 .hero-cta {
   display: inline-flex;
   align-items: center;
@@ -230,13 +239,33 @@ body.en .hero-subtitle { font-family: var(--font-en-body); font-weight: 300; }
   font-size: 0.9rem;
   border-radius: 4px;
   transition: all 0.3s;
-  opacity: 0;
-  animation: fadeUp 0.8s 0.8s forwards;
 }
 
 .hero-cta:hover {
   background: var(--accent);
   color: var(--bg-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(64, 138, 113, 0.35);
+}
+
+.hero-cta-cv {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2.2rem;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: var(--bg-primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.hero-cta-cv:hover {
+  background: var(--accent-dim);
+  border-color: var(--accent-dim);
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(64, 138, 113, 0.35);
 }
@@ -811,7 +840,7 @@ footer .footer-accent { color: var(--accent); }
 
 <section class="hero" id="hero">
   <div class="hero-content">
-    <p class="hero-greeting" data-ar="أهلاً بك" data-en="Welcome">أهلاً بك</p>
+    <p class="hero-greeting" data-ar="المحاسبة والتميز المالي" data-en="Accounting & Financial Excellence">المحاسبة والتميز المالي</p>
     <h1>
       <span data-ar="أحمد عبدالله علي" data-en="Ahmed Abdullah Ali">أحمد عبدالله علي</span>
       <span class="highlight" data-ar="مسؤول التنسيق الإداري والمالي" data-en="Admin & Finance Coordination Officer">مسؤول التنسيق الإداري والمالي</span>
@@ -820,8 +849,10 @@ footer .footer-accent { color: var(--accent); }
       <span class="hero-badge" data-ar="عضو منتسب في SOCPA" data-en="SOCPA Associate Member">عضو منتسب في SOCPA</span>
       <span class="hero-badge" data-ar="أخصائي منصات المنافسات الحكومية" data-en="Government Tenders Specialist">أخصائي منصات المنافسات الحكومية</span>
     </div>
-    <p class="hero-subtitle" data-ar="محاسب وشغوف بالتفاصيل المالية. أكتب هنا عن تجاربي المهنية، أدوات أستخدمها يومياً، ومواضيع تستحق المشاركة." data-en="An accountant passionate about financial details. Here I write about my professional experiences, tools I use daily, and topics worth sharing.">محاسب وشغوف بالتفاصيل المالية. أكتب هنا عن تجاربي المهنية، أدوات أستخدمها يومياً، ومواضيع تستحق المشاركة.</p>
-    <a href="#about" class="hero-cta" data-ar="تعرّف عليّ ↓" data-en="Learn More ↓">تعرّف عليّ ↓</a>
+    <div class="hero-buttons">
+      <a href="#about" class="hero-cta" data-ar="تعرّف عليّ ↓" data-en="Learn More ↓">تعرّف عليّ ↓</a>
+      <a href="cv-arabic-pdf.pdf" class="hero-cta-cv" id="cv-download-btn" download data-ar-href="cv-arabic-pdf.pdf" data-en-href="cv-english-pdf.pdf" data-ar="تحميل السيرة الذاتية ↓" data-en="Download CV ↓">تحميل السيرة الذاتية ↓</a>
+    </div>
   </div>
   <div class="scroll-hint">
     <div class="line"></div>
@@ -1056,6 +1087,12 @@ function toggleLang() {
   document.querySelectorAll('[data-ar-ph]').forEach(el => {
     el.placeholder = el.getAttribute(`data-${lang}-ph`);
   });
+
+  // تحديث رابط تحميل السيرة حسب اللغة
+  const cvBtn = document.getElementById('cv-download-btn');
+  if (cvBtn) {
+    cvBtn.href = cvBtn.getAttribute(`data-${lang}-href`);
+  }
 }
 
 window.addEventListener('scroll', () => {
