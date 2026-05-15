@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المدونة | أحمد عبدالله علي</title>
+<meta name="description" content="مدونة أحمد عبدالله علي — مقالات في المحاسبة، المشتريات الحكومية، والإدارة المالية.">
+<meta name="keywords" content="مدونة, أحمد عبدالله علي, محاسبة, SOCPA, اعتماد, تنافس, مواسم">
+<meta name="author" content="أحمد عبدالله علي">
+<meta property="og:title" content="المدونة | أحمد عبدالله علي">
+<meta property="og:description" content="مقالات في المحاسبة، المشتريات الحكومية، والإدارة المالية.">
+<meta property="og:url" content="https://ahmadali.net/blog.html">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Kufi+Arabic:wght@300;400;600;700;800&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #091413;
+  --bg-secondary: #0D1C1A;
+  --bg-card: #122421;
+  --bg-card-hover: #1A3230;
+  --accent: #408A71;
+  --accent-dim: #285A48;
+  --accent-light: #B0E4CC;
+  --accent-glow: rgba(64, 138, 113, 0.18);
+  --text-primary: #E8F0EC;
+  --text-secondary: #8FA39B;
+  --text-muted: #556962;
+  --border: rgba(40, 90, 72, 0.35);
+  --border-strong: rgba(64, 138, 113, 0.5);
+  --font-ar: 'Noto Kufi Arabic', 'Amiri', sans-serif;
+  --font-ar-body: 'Amiri', 'Noto Kufi Arabic', serif;
+  --font-en: 'DM Serif Display', serif;
+  --font-en-body: 'Outfit', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-ar);
+  line-height: 1.8;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body.en { font-family: var(--font-en-body); direction: ltr; }
+body.en h1, body.en h2, body.en h3 { font-family: var(--font-en); }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(9, 20, 19, 0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.4s;
+}
+
+nav.scrolled { padding: 0.6rem 2rem; }
+
+.nav-logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 400;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--accent);
+  transition: width 0.3s;
+}
+body.en .nav-links a::after { right: auto; left: 0; }
+
+.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--accent); }
+.nav-links a.active::after { width: 100%; }
+
+.lang-toggle {
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--accent);
+  padding: 0.35rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-en-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  transition: all 0.3s;
+}
+
+.lang-toggle:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.blog-hero {
+  padding: 8rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+
+.blog-hero::before {
+  content: '';
+  position: absolute;
+  top: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.blog-hero-label {
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.blog-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: var(--accent-light);
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+
+body.en .blog-hero h1 { font-family: var(--font-en); font-weight: 400; }
+
+.breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.breadcrumb a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.breadcrumb a:hover { color: var(--accent); }
+.breadcrumb .sep { color: var(--accent-dim); }
+.breadcrumb .current { color: var(--accent); }
+
+.blog-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem 5rem;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.5rem;
+}
+
+.post-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.4s;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+
+.post-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  opacity: 0.7;
+  transition: opacity 0.4s;
+}
+
+.post-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.post-card:hover::before { opacity: 1; }
+
+.post-content {
+  padding: 1.4rem 1.4rem 1.3rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-category {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-glow);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  align-self: flex-start;
+}
+
+.post-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+body.en .post-title { font-family: var(--font-en); font-weight: 400; }
+
+.post-meta {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.post-meta .dot {
+  width: 3px;
+  height: 3px;
+  background: var(--accent-dim);
+  border-radius: 50%;
+}
+
+.post-excerpt {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.85;
+  font-family: var(--font-ar-body);
+  flex: 1;
+  margin-bottom: 1.1rem;
+}
+
+body.en .post-excerpt { font-family: var(--font-en-body); font-weight: 300; line-height: 1.7; }
+
+.post-read-more {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  align-self: flex-start;
+  transition: gap 0.3s;
+}
+
+.post-card:hover .post-read-more { gap: 0.7rem; }
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  color: var(--accent-dim);
+  margin-bottom: 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+footer .footer-accent { color: var(--accent); }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(9, 20, 19, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 1.5rem 2rem;
+    gap: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu-btn { display: block; }
+  .blog-hero { padding: 7rem 1.5rem 3rem; }
+  .blog-container { padding: 3rem 1.5rem 4rem; }
+  .posts-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo" data-ar="أحمد عبدالله علي" data-en="Ahmed Abdullah Ali">أحمد عبدالله علي</a>
+  <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about" data-ar="نبذة" data-en="About">نبذة</a></li>
+    <li><a href="index.html#experience" data-ar="الخبرات" data-en="Experience">الخبرات</a></li>
+    <li><a href="index.html#skills" data-ar="المهارات" data-en="Skills">المهارات</a></li>
+    <li><a href="index.html#certs" data-ar="الشهادات" data-en="Certifications">الشهادات</a></li>
+    <li><a href="index.html#projects" data-ar="المشاريع" data-en="Projects">المشاريع</a></li>
+    <li><a href="blog.html" class="active" data-ar="المدونة" data-en="Blog">المدونة</a></li>
+    <li><a href="index.html#contact" data-ar="تواصل" data-en="Contact">تواصل</a></li>
+    <li><button class="lang-toggle" onclick="toggleLang()">EN</button></li>
+  </ul>
+</nav>
+
+<header class="blog-hero">
+  <p class="blog-hero-label" data-ar="مقالات وخواطر" data-en="Articles & Notes">مقالات وخواطر</p>
+  <h1 data-ar="المدونة" data-en="Blog">المدونة</h1>
+  <div class="breadcrumb">
+    <a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+    <span class="sep">›</span>
+    <span class="current" data-ar="المدونة" data-en="Blog">المدونة</span>
+  </div>
+</header>
+
+<main class="blog-container">
+  <div class="posts-grid">
+
+    <a href="nabdha.html" class="post-card">
+      <div class="post-content">
+        <span class="post-category" data-ar="خواطر" data-en="Reflections">خواطر</span>
+        <h2 class="post-title" data-ar="نبذة" data-en="About">نبذة</h2>
+        <div class="post-meta">
+          <span data-ar="9 مايو 2026" data-en="May 9, 2026">9 مايو 2026</span>
+          <span class="dot"></span>
+          <span data-ar="أحمد عبدالله علي" data-en="Ahmed Abdullah Ali">أحمد عبدالله علي</span>
+        </div>
+        <p class="post-excerpt" data-ar="لن أنسى اليوم الذي استلمت فيه شهادة الثانوية. تخرجت بلا هدف وبلا طموح — وكانت تلك بداية رحلة لم أخطط لها، تعلّمتُ منها أن الهدف أحياناً لا يسبق الطريق، بل يولد منه." data-en="I'll never forget the day I received my high school certificate. I graduated with no goal and no ambition — and that was the start of a journey I never planned, one that taught me that purpose doesn't always come before the path; sometimes it's born from it.">لن أنسى اليوم الذي استلمت فيه شهادة الثانوية. تخرجت بلا هدف وبلا طموح — وكانت تلك بداية رحلة لم أخطط لها، تعلّمتُ منها أن الهدف أحياناً لا يسبق الطريق، بل يولد منه.</p>
+        <span class="post-read-more" data-ar="اقرأ المقال ←" data-en="Read Article →">اقرأ المقال ←</span>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  <p><span class="footer-accent">©</span> 2026 <span data-ar="أحمد عبدالله علي" data-en="Ahmed Abdullah Ali">أحمد عبدالله علي</span></p>
+</footer>
+
+<script>
+let lang = 'ar';
+
+function toggleLang() {
+  lang = lang === 'ar' ? 'en' : 'ar';
+  const body = document.body;
+  const html = document.documentElement;
+
+  if (lang === 'en') {
+    body.classList.add('en');
+    html.setAttribute('dir', 'ltr');
+    html.setAttribute('lang', 'en');
+  } else {
+    body.classList.remove('en');
+    html.setAttribute('dir', 'rtl');
+    html.setAttribute('lang', 'ar');
+  }
+
+  document.querySelector('.lang-toggle').textContent = lang === 'ar' ? 'EN' : 'عربي';
+
+  document.querySelectorAll('[data-ar]').forEach(el => {
+    const val = el.getAttribute(`data-${lang}`);
+    if (val !== null) el.textContent = val;
+  });
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+</script>
+
+</body>
+</html>

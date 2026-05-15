@@ -841,7 +841,7 @@ footer .footer-accent { color: var(--accent); }
     <li><a href="#skills" data-ar="المهارات" data-en="Skills">المهارات</a></li>
     <li><a href="#certs" data-ar="الشهادات" data-en="Certifications">الشهادات</a></li>
     <li><a href="#projects" data-ar="المشاريع" data-en="Projects">المشاريع</a></li>
-    <li><a href="#blog" data-ar="المدونة" data-en="Blog">المدونة</a></li>
+    <li><a href="blog.html" data-ar="المدونة" data-en="Blog">المدونة</a></li>
     <li><a href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a></li>
     <li><button class="lang-toggle" onclick="toggleLang()">EN</button></li>
   </ul>
@@ -1029,14 +1029,15 @@ footer .footer-accent { color: var(--accent); }
     <h2 class="section-title" data-ar="المدونة" data-en="Blog">المدونة</h2>
   </div>
   <div class="blog-grid fade-in">
-    <a href="nabtha.html" class="blog-card-link" style="text-decoration:none;color:inherit;display:block;">
-      <div class="blog-card">
-        <div class="blog-date">2026 / 05</div>
-        <div class="blog-title" data-ar="نبتة" data-en="A Seedling">نبتة</div>
-        <div class="blog-excerpt" data-ar="أوّل تدوينة في هذه المساحة — لماذا أكتب، وعن ماذا، ولمَن. خاطرة قصيرة عن البدايات والشغف بالتفاصيل." data-en="The first post in this space — why I write, about what, and for whom. A brief reflection on beginnings and a passion for the details.">أوّل تدوينة في هذه المساحة — لماذا أكتب، وعن ماذا، ولمَن. خاطرة قصيرة عن البدايات والشغف بالتفاصيل.</div>
-        <span class="blog-read-more" data-ar="اقرأ المزيد ←" data-en="Read More →">اقرأ المزيد ←</span>
-      </div>
-    </a>
+    <div class="blog-card" onclick="location.href='nabdha.html'" style="cursor:pointer;">
+      <div class="blog-date">2026 / 05</div>
+      <div class="blog-title" data-ar="نبذة" data-en="About">نبذة</div>
+      <div class="blog-excerpt" data-ar="لن أنسى اليوم الذي استلمت فيه شهادة الثانوية. تخرجت بلا هدف وبلا طموح — وكانت تلك بداية رحلة لم أخطط لها." data-en="I'll never forget the day I received my high school certificate. I graduated with no goal and no ambition — and that was the start of a journey I never planned.">لن أنسى اليوم الذي استلمت فيه شهادة الثانوية. تخرجت بلا هدف وبلا طموح — وكانت تلك بداية رحلة لم أخطط لها.</div>
+      <a href="nabdha.html" class="blog-read-more" data-ar="اقرأ المقال ←" data-en="Read Article →">اقرأ المقال ←</a>
+    </div>
+  </div>
+  <div class="fade-in" style="text-align:center; margin-top:2.5rem;">
+    <a href="blog.html" style="display:inline-block; padding:0.85rem 2.2rem; background:transparent; border:1px solid var(--accent); color:var(--accent); text-decoration:none; font-size:0.9rem; border-radius:4px; transition:all 0.3s;" onmouseover="this.style.background='var(--accent)';this.style.color='var(--bg-primary)';this.style.transform='translateY(-2px)';" onmouseout="this.style.background='transparent';this.style.color='var(--accent)';this.style.transform='translateY(0)';" data-ar="عرض كل المقالات ←" data-en="View All Posts →">عرض كل المقالات ←</a>
   </div>
 </section>
 
