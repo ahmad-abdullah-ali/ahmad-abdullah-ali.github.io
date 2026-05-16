@@ -22,7 +22,9 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Kufi+Arabic:wght@300;400;600;700;800&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400&family=Noto+Kufi+Arabic:wght@400;700;800&family=DM+Serif+Display&family=Outfit:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400&family=Noto+Kufi+Arabic:wght@400;700;800&family=DM+Serif+Display&family=Outfit:wght@400;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400&family=Noto+Kufi+Arabic:wght@400;700;800&family=DM+Serif+Display&family=Outfit:wght@400;600&display=swap"></noscript>
 <style>
 :root {
   --bg-primary: #091413;
@@ -169,7 +171,7 @@ body.en .nav-links a::after { right: auto; left: 0; }
   pointer-events: none;
 }
 
-.hero-content { position: relative; z-index: 1; max-width: 800px; }
+.hero-content { position: relative; z-index: 1; max-width: 800px; min-height: 380px; }
 
 .hero-greeting {
   font-size: 1rem;
@@ -396,7 +398,22 @@ body.en .stat-number { font-family: var(--font-en); }
 
 .timeline {
   position: relative;
+  padding-right: 3rem;
 }
+
+body.en .timeline { padding-right: 0; padding-left: 3rem; }
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent), var(--border), transparent);
+}
+
+body.en .timeline::before { right: auto; left: 0; }
 
 .timeline-item {
   position: relative;
@@ -412,6 +429,20 @@ body.en .stat-number { font-family: var(--font-en); }
   border-color: var(--border-strong);
   background: var(--bg-card-hover);
 }
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  right: -3.55rem;
+  top: 2.2rem;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+body.en .timeline-item::before { right: auto; left: -3.55rem; }
 
 .timeline-date {
   font-size: 0.75rem;
@@ -803,6 +834,10 @@ footer .footer-accent { color: var(--accent); }
   .contact-simple .contact-links { grid-template-columns: 1fr; }
   .projects-grid, .blog-grid, .certs-grid { grid-template-columns: 1fr; }
   section { padding: 4rem 1.5rem; }
+  .timeline { padding-right: 2rem; }
+  body.en .timeline { padding-right: 0; padding-left: 2rem; }
+  .timeline-item::before { right: -2.55rem; }
+  body.en .timeline-item::before { right: auto; left: -2.55rem; }
 }
 </style>
 </head>
@@ -832,6 +867,7 @@ footer .footer-accent { color: var(--accent); }
   </ul>
 </nav>
 
+<main>
 <section class="hero" id="hero">
   <div class="hero-content">
     <p class="hero-greeting" data-ar="المحاسبة والتميز المالي" data-en="Accounting & Financial Excellence">المحاسبة والتميز المالي</p>
@@ -1016,7 +1052,7 @@ footer .footer-accent { color: var(--accent); }
   <div class="blog-grid fade-in">
     <div class="blog-card" onclick="location.href='aseer.html'" style="cursor:pointer;">
       <div class="blog-date">2026 / 05</div>
-      <div class="blog-title" data-ar="أسير" data-en="Walking">أسير</div>
+      <div class="blog-title" data-ar="أسير" data-en="I Walk">أسير</div>
       <div class="blog-excerpt" data-ar="لن أنسى اليوم الذي استلمت فيه شهادة الثانوية. تخرجت بلا هدف وبلا طموح — وكانت تلك بداية رحلة لم أخطط لها." data-en="I'll never forget the day I received my high school certificate. I graduated with no goal and no ambition — and that was the start of a journey I never planned.">لن أنسى اليوم الذي استلمت فيه شهادة الثانوية. تخرجت بلا هدف وبلا طموح — وكانت تلك بداية رحلة لم أخطط لها.</div>
       <a href="aseer.html" class="blog-read-more" data-ar="اقرأ المقال ←" data-en="Read Article →">اقرأ المقال ←</a>
     </div>
@@ -1052,6 +1088,8 @@ footer .footer-accent { color: var(--accent); }
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <p><span class="footer-accent">©</span> 2026 <span data-ar="أحمد عبدالله علي" data-en="Ahmed Abdullah Ali">أحمد عبدالله علي</span></p>
