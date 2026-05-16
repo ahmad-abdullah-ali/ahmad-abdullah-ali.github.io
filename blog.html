@@ -11,6 +11,15 @@
 <meta property="og:description" content="مقالات في المحاسبة، المشتريات الحكومية، والإدارة المالية.">
 <meta property="og:url" content="https://ahmadali.net/blog.html">
 <meta name="robots" content="index, follow">
+<script>
+(function(){
+  try {
+    var l = localStorage.getItem('siteLang') || 'ar';
+    document.documentElement.dir = l === 'en' ? 'ltr' : 'rtl';
+    document.documentElement.lang = l;
+  } catch(e){}
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Kufi+Arabic:wght@300;400;600;700;800&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -373,6 +382,15 @@ footer .footer-accent { color: var(--accent); }
 </style>
 </head>
 <body>
+<script>
+(function(){
+  try {
+    if ((localStorage.getItem('siteLang') || 'ar') === 'en') {
+      document.body.classList.add('en');
+    }
+  } catch(e){}
+})();
+</script>
 
 <nav id="navbar">
   <a href="index.html" class="nav-logo" data-ar="أحمد عبدالله علي" data-en="Ahmed Abdullah Ali">أحمد عبدالله علي</a>
@@ -425,10 +443,11 @@ footer .footer-accent { color: var(--accent); }
 </footer>
 
 <script>
-let lang = 'ar';
+let lang = (function(){ try { return localStorage.getItem('siteLang') || 'ar'; } catch(e){ return 'ar'; } })();
 
-function toggleLang() {
-  lang = lang === 'ar' ? 'en' : 'ar';
+function applyLang(target) {
+  lang = target;
+  try { localStorage.setItem('siteLang', lang); } catch(e){}
   const body = document.body;
   const html = document.documentElement;
 
@@ -451,6 +470,12 @@ function toggleLang() {
     if (val !== null) el.textContent = val;
   });
 }
+
+function toggleLang() {
+  applyLang(lang === 'ar' ? 'en' : 'ar');
+}
+
+applyLang(lang);
 
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
