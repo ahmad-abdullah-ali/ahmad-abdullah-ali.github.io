@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>أحمد عبدالله علي | مدونة شخصية</title>
+<title>أحمد</title>
 <meta name="description" content="أحمد عبدالله علي — مسؤول التنسيق الإداري والمالي، عضو منتسب في SOCPA، أخصائي منصات اعتماد وتنافس ومواسم. الدمام، المنطقة الشرقية.">
 <meta name="keywords" content="أحمد عبدالله علي, محاسب, SOCPA, اعتماد, تنافس, مواسم, واحة المستهلك, أجكوم, الدمام">
 <meta name="author" content="أحمد عبدالله علي">
@@ -1092,6 +1092,7 @@ function toggleLang() {
 
   document.querySelector('.lang-toggle').textContent = lang === 'ar' ? 'EN' : 'عربي';
 
+  document.title = lang === 'en' ? 'Ahmed' : 'أحمد';
   document.querySelectorAll('[data-ar]').forEach(el => {
     el.textContent = el.getAttribute(`data-${lang}`);
   });

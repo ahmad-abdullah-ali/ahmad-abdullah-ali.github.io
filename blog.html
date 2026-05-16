@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>المدونة | أحمد عبدالله علي</title>
+<title>المدونة</title>
 <meta name="description" content="مدونة أحمد عبدالله علي — مقالات في المحاسبة، المشتريات الحكومية، والإدارة المالية.">
 <meta name="keywords" content="مدونة, أحمد عبدالله علي, محاسبة, SOCPA, اعتماد, تنافس, مواسم">
 <meta name="author" content="أحمد عبدالله علي">
@@ -378,6 +378,7 @@ footer .footer-accent { color: var(--accent); }
   <a href="index.html" class="nav-logo" data-ar="أحمد عبدالله علي" data-en="Ahmed Abdullah Ali">أحمد عبدالله علي</a>
   <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
   <ul class="nav-links" id="navLinks">
+  <ul class="nav-links" id="navLinks">
     <li><a href="index.html#about" data-ar="نبذة" data-en="About">نبذة</a></li>
     <li><a href="index.html#experience" data-ar="الخبرات" data-en="Experience">الخبرات</a></li>
     <li><a href="index.html#skills" data-ar="المهارات" data-en="Skills">المهارات</a></li>
@@ -442,6 +443,8 @@ function toggleLang() {
   }
 
   document.querySelector('.lang-toggle').textContent = lang === 'ar' ? 'EN' : 'عربي';
+
+  document.title = lang === 'en' ? 'Blog' : 'المدونة';
 
   document.querySelectorAll('[data-ar]').forEach(el => {
     const val = el.getAttribute(`data-${lang}`);
