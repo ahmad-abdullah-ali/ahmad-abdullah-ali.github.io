@@ -400,6 +400,170 @@ footer {
 
 footer .footer-accent { color: var(--accent); }
 
+.comment-form-wrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.comment-form-title {
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.8rem;
+  margin: 0 0 1.5rem;
+  font-weight: 600;
+}
+
+body.en .comment-form-title { font-family: var(--font-en); font-weight: 400; }
+
+#commentForm .form-field {
+  margin-bottom: 1.2rem;
+}
+
+#commentForm label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+#commentForm input[type="text"],
+#commentForm textarea {
+  width: 100%;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  font-family: var(--font-ar);
+  font-size: 0.95rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+}
+
+body.en #commentForm input[type="text"],
+body.en #commentForm textarea {
+  font-family: var(--font-en-body);
+}
+
+#commentForm input[type="text"]:focus,
+#commentForm textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+#commentForm textarea {
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.7;
+}
+
+.comment-submit-btn {
+  background: var(--accent);
+  color: var(--bg-primary);
+  border: none;
+  padding: 0.7rem 1.6rem;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  font-family: var(--font-ar);
+  font-size: 0.9rem;
+}
+
+body.en .comment-submit-btn { font-family: var(--font-en-body); }
+
+.comment-submit-btn:hover:not(:disabled) {
+  background: var(--accent-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(64, 138, 113, 0.3);
+}
+
+.comment-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.comment-submit-btn svg {
+  transform: scaleX(-1);
+}
+
+body.en .comment-submit-btn svg { transform: none; }
+
+.comment-status {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+  min-height: 1.2em;
+}
+
+.comment-status.success { color: var(--accent-light); }
+.comment-status.error { color: #e6a8a8; }
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.comment-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.2rem 1.4rem;
+  transition: border-color 0.3s;
+}
+
+.comment-item:hover { border-color: var(--border-strong); }
+
+.comment-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+  gap: 1rem;
+}
+
+.comment-item-name {
+  font-weight: 600;
+  color: var(--accent-light);
+  font-size: 0.95rem;
+}
+
+.comment-item-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+.comment-item-body {
+  color: var(--text-secondary);
+  line-height: 1.85;
+  font-family: var(--font-ar-body);
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+body.en .comment-item-body { font-family: var(--font-en-body); font-weight: 300; }
+
+.comments-empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-links.open {
@@ -489,15 +653,32 @@ footer .footer-accent { color: var(--accent); }
   <h2 class="comments-title" data-ar="التعليقات" data-en="Comments">التعليقات</h2>
   <p class="comments-intro" data-ar="اكتب تعليقك أدناه — لا تحتاج حساباً لأي منصة." data-en="Leave a comment below — no account required.">اكتب تعليقك أدناه — لا تحتاج حساباً لأي منصة.</p>
 
-  <div id="cusdis_thread"
-    data-host="https://cusdis.com"
-    data-app-id="004d2898-768a-472b-8472-5dd8f0c97e91"
-    data-page-id="aseer"
-    data-page-url="https://ahmadali.net/aseer.html"
-    data-page-title="أسير"
-    data-theme="dark">
+  <div class="comment-form-wrapper">
+    <h3 class="comment-form-title" data-ar="اترك تعليقاً" data-en="Leave a comment">اترك تعليقاً</h3>
+    <form id="commentForm" novalidate>
+      <div class="form-field">
+        <label for="commentName" data-ar="الاسم *" data-en="Name *">الاسم *</label>
+        <input type="text" id="commentName" name="name" required maxlength="50" autocomplete="name">
+      </div>
+      <div class="form-field">
+        <label for="commentText" data-ar="التعليق *" data-en="Comment *">التعليق *</label>
+        <textarea id="commentText" name="comment" required maxlength="2000" rows="5"></textarea>
+      </div>
+      <div style="position:absolute;left:-9999px;" aria-hidden="true">
+        <label>Leave this field empty
+          <input type="text" name="website" tabindex="-1" autocomplete="off">
+        </label>
+      </div>
+      <button type="submit" class="comment-submit-btn" id="commentSubmitBtn">
+        <span data-ar="إرسال التعليق" data-en="Send Comment">إرسال التعليق</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+      </button>
+      <p id="commentStatus" class="comment-status" role="status" aria-live="polite"></p>
+    </form>
   </div>
-  <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+  <div id="commentsList" class="comments-list"></div>
 </section>
 
 </main>
@@ -554,6 +735,114 @@ document.querySelectorAll('.nav-links a').forEach(a => {
     document.getElementById('navLinks').classList.remove('open');
   });
 });
+
+const COMMENTS_API = '';
+const POST_ID = 'aseer';
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[c]);
+}
+
+function formatDate(ts) {
+  const d = new Date(ts);
+  const locale = lang === 'en' ? 'en-US' : 'ar-SA';
+  return d.toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+function renderComments(comments) {
+  const listEl = document.getElementById('commentsList');
+  if (!comments.length) {
+    const msg = lang === 'en' ? 'Be the first to comment' : 'كن أول من يعلّق';
+    listEl.innerHTML = `<p class="comments-empty">${msg}</p>`;
+    return;
+  }
+  listEl.innerHTML = comments.map(c => `
+    <article class="comment-item">
+      <div class="comment-item-header">
+        <span class="comment-item-name">${escapeHtml(c.name)}</span>
+        <span class="comment-item-date">${formatDate(c.createdAt)}</span>
+      </div>
+      <p class="comment-item-body">${escapeHtml(c.comment)}</p>
+    </article>
+  `).join('');
+}
+
+async function loadComments() {
+  const listEl = document.getElementById('commentsList');
+  if (!COMMENTS_API) {
+    listEl.innerHTML = '';
+    return;
+  }
+  try {
+    const res = await fetch(`${COMMENTS_API}?postId=${encodeURIComponent(POST_ID)}`);
+    if (!res.ok) throw new Error('Failed');
+    const data = await res.json();
+    renderComments(data.comments || []);
+  } catch (err) {
+    listEl.innerHTML = '';
+  }
+}
+
+async function submitComment(e) {
+  e.preventDefault();
+  const form = e.target;
+  const statusEl = document.getElementById('commentStatus');
+  const btn = document.getElementById('commentSubmitBtn');
+
+  if (!COMMENTS_API) {
+    statusEl.textContent = lang === 'en'
+      ? 'Comments system is being set up — coming soon'
+      : 'نظام التعليقات قيد الإعداد — سيكون متاحاً قريباً';
+    statusEl.className = 'comment-status error';
+    return;
+  }
+
+  const payload = {
+    name: form.name.value.trim(),
+    comment: form.comment.value.trim(),
+    website: form.website.value,
+    postId: POST_ID
+  };
+
+  if (!payload.name || !payload.comment) return;
+
+  btn.disabled = true;
+  statusEl.className = 'comment-status';
+  statusEl.textContent = lang === 'en' ? 'Sending...' : 'جاري الإرسال...';
+
+  try {
+    const res = await fetch(COMMENTS_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json().catch(() => ({}));
+
+    if (res.ok) {
+      statusEl.textContent = lang === 'en'
+        ? 'Comment submitted. Thank you!'
+        : 'تم إرسال تعليقك. شكراً!';
+      statusEl.className = 'comment-status success';
+      form.reset();
+      loadComments();
+    } else {
+      statusEl.textContent = data.error || (lang === 'en' ? 'Something went wrong' : 'حدث خطأ، حاول مرة أخرى');
+      statusEl.className = 'comment-status error';
+    }
+  } catch (err) {
+    statusEl.textContent = lang === 'en'
+      ? 'Connection error. Try again.'
+      : 'خطأ في الاتصال. حاول مجدداً';
+    statusEl.className = 'comment-status error';
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+document.getElementById('commentForm').addEventListener('submit', submitComment);
+loadComments();
 </script>
 
 </body>

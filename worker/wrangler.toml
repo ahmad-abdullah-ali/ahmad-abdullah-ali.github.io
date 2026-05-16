@@ -1,0 +1,12 @@
+name = "ahmadali-comments"
+main = "index.js"
+compatibility_date = "2025-01-01"
+
+# Replace the id below with your KV namespace id after running:
+#   npx wrangler kv namespace create COMMENTS_KV
+[[kv_namespaces]]
+binding = "COMMENTS_KV"
+id = "REPLACE_WITH_YOUR_KV_ID"
+
+# Set ADMIN_TOKEN as a secret (not in this file):
+#   npx wrangler secret put ADMIN_TOKEN
